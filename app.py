@@ -7,7 +7,25 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    render_template('home.html')
+    return render_template("home.html")
+
+
+@app.route('/add_book')
+def add_book():
+    return render_template("add_book.html")
+
+
+@app.route('/my_list')
+def my_list():
+    return render_template("my_list.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
+
 
 
 
