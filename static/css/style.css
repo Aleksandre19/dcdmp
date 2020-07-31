@@ -1,0 +1,31 @@
+/************ MENU ***********/
+
+.menu_row .menu_col{
+    padding: 0;
+}
+
+.menu_col{
+    height: 100px;
+}
+
+.nav-wrapper{
+    height: 100px !important;
+    padding-top: 20px 0px 20px 0px;
+}
+
+.transparent{
+    box-shadow: none;
+}
+
+nav a{
+    color: #c14d00;
+}
+
+nav i.material-icons{
+    font-size: 40px;
+}
+
+nav .brand-logo{
+    top: 25%;
+    left: 70%;
+}

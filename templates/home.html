@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Document</title>
 </head>
 <body>
-    
-    <!-- The whole page container -->
-    <div class="container">
-       
+ 
        <!-- Header section -->
        <header>
             <!-- Menu -->
-            <div class="row">
-                <div class="col s12">
-                    <nav>
-                        <div class="nav-wrapper">
-                            <a href="#!" class="brand-logo">Logo</a>
-                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <div class="row menu_row ">
+                <div class="col s12 menu_col">
+                    <nav class="transparent ">
+                        <div class="nav-wrapper valign-wrapper">     
+                            <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                              
+                            <a href="{{ url_for('home') }}" class="brand-logo ">
+                                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                            </a>
+                                                 
                             <ul class="right hide-on-med-and-down">
                                 <li><a href="{{ url_for('home') }}">Home</a></li>
                                 <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
@@ -41,9 +43,11 @@
 
         <!-- Welcoming section -->
         <section>
-
-            <h1>Find And Collect Your Favoriet Books From All Over The World </h1>
-
+            <div class="row">
+                <div class="col s12">
+                    <h1>Find And Collect Your Favoriet Books From All Over The World </h1>
+                </div>
+            </div>
             <div class="row">
                 <form class="col s12">
                     <div class="input-field">
@@ -56,88 +60,99 @@
 
         </section>
 
-        <!-- New books section -->
-        <section>
-            <h2>New released books <span class="new badge"></span></h2>
+        <!-- Body section -->
+        <div class="container">
 
-            <!-- Books list -->
-            <div class="row">
+            <!-- New books section -->
+            <section>
+                <div class="row">
+                    <div class="col s12">
+                        <h2>New released books <span class="new badge"></span></h2>
+                    </div>
+                </div>        
 
-                <div class="col s12">
-                   <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                <!-- Books list -->
+                <div class="row">
+
+                    <div class="col s12">
+                    <div class="card">
+                            <div class="card-image">
+                                <img src="images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                            </div>
+                            <div class="card-content">
+                                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col s12">
-                   <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s12">
-                   <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                    <div class="col s12">
+                    <div class="card">
+                            <div class="card-image">
+                                <img src="images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                            </div>
+                            <div class="card-content">
+                                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </div>    
-        </section>
-
-
-        <!-- Best books section -->
-        <section>
-            <h2>New released books <span class="new badge"></span></h2>
-
-            <!-- Books list -->
-            <div class="row">
-
-                <div class="col s12">
-                   <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                            <a class="waves-effect waves-light btn">Purchase</a>
+                    <div class="col s12">
+                    <div class="card">
+                            <div class="card-image">
+                                <img src="images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                            </div>
+                            <div class="card-content">
+                                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col s12">
-                   <div class="card">
-                        <div class="card-image">
-                            <img src="images/sample-1.jpg">
-                            <span class="card-title">Card Title</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                            <a class="waves-effect waves-light btn">Purchase</a>
+                </div>    
+            </section>
+
+
+            <!-- Best books section -->
+            <section>
+                <div class="row">
+                    <div class="col s12">
+                        <h2>New released books <span class="new badge"></span></h2>
+                    </div>
+                </div>        
+
+                <!-- Books list -->
+                <div class="row">
+
+                    <div class="col s12">
+                    <div class="card">
+                            <div class="card-image">
+                                <img src="images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                <a class="waves-effect waves-light btn">Purchase</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-            </div>    
-        </section>
 
+                    <div class="col s12">
+                    <div class="card">
+                            <div class="card-image">
+                                <img src="images/sample-1.jpg">
+                                <span class="card-title">Card Title</span>
+                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                <a class="waves-effect waves-light btn">Purchase</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>    
+            </section>
+        </div>
         <!-- Page footer -->
         <footer class="page-footer">
 
@@ -176,7 +191,7 @@
 
 
 
-    </div>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
