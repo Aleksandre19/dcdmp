@@ -13,49 +13,53 @@
        <!-- Header section -->
        <header>
             <!-- Menu -->
-            <div class="row menu_row ">
+            <div class="row menu_row">
                 <div class="col s12 menu_col">
-                    <nav class="transparent ">
-                        <div class="nav-wrapper valign-wrapper">     
-                            <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
-                              
-                            <a href="{{ url_for('home') }}" class="brand-logo ">
-                                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Book Stor's logo" id="logo"/>
-                            </a>
-                                                 
-                            <ul class="right hide-on-med-and-down">
-                                <li><a href="{{ url_for('home') }}">Home</a></li>
-                                <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                                <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                                <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                            </ul>
-                            <ul class="side-nav" id="mobile-demo">
-                                <li><a href="{{ url_for('home') }}">Home</a></li>
-                                <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                                <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                                <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+                    <div class="navbar-fixed">
+                        <nav class="transparent ">
+                            <div class="nav-wrapper valign-wrapper">     
+                                <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                                
+                                <a href="{{ url_for('home') }}" class="brand-logo ">
+                                    <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                </a>
+                                                    
+                                <ul class="right hide-on-med-and-down">
+                                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                </ul>
+                                <ul class="side-nav" id="mobile-demo">
+                                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </header>
 
         <!-- Welcoming section -->
-        <section>
-            <div class="row">
-                <div class="col s12">
-                    <h1>Find And Collect Your Favoriet Books From All Over The World </h1>
+        <section id="welcoming" class="">
+            <div class="welcoming-wrapper">
+                <div class="row ">
+                    <div class="col s12">
+                        <h1 id="welcoming_text">Find And Collect Your Favoriet Books From All Over The World </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <form class="col s12">
-                    <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i> 
-                    </div>  
-                </form>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
+                            <i class="material-icons colose-search-icon">close</i> 
+                        </div>  
+                    </form>
+                </div>
             </div>
 
         </section>
