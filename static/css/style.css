@@ -134,7 +134,7 @@ span.badge.new:after{
     background-color: #2bf3ff;
 }
 
-.new-books-title-wrapper{
+.books-title-wrapper{
     padding: 20px .75em 10px .75em !important;
 }
 
@@ -196,6 +196,48 @@ span.badge.new:after{
     color: #c14d00;
 }
 
+/* New Released Book Section */
 
+.released-book-section{
+    padding: 0px 0px 20px 0px;
+    background-color: white;
+    background-image: url('../img/sm/released-books-top-bg.jpg');
+    background-repeat: no-repeat;
+    background-position-y: top;
+    background-color: #18effc;
+}
 
+.money-icon{
+    border: 2px solid #c14d00;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 15px;
+}
 
+.released-section-title{
+    text-align: right;
+    margin-right: 2px;
+}
+
+.released-books-card{
+    margin: 20px 0px;
+    border: 3px solid #ff9752;
+}
+
+.released-books-price{
+    background-color: #ff9752;
+    color: white;
+}
+
+.released-add-icon{
+    right: -18px !important;
+    top: -20px !important;
+    background-color: #ff9752 !important;
+}
+
+.release-purchase-icon{
+    position: absolute;
+    bottom: 4px;
+    background-color: #ff9752;
+}
