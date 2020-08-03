@@ -50,8 +50,6 @@
                     <div class="col s12">
                         <h1 id="welcoming_text">Find And Collect Your Favoriet Books From All Over The World </h1>
                     </div>
-                </div>
-                <div class="row">
                     <form class="col s12">
                         <div class="input-field">
                             <input id="search" type="search" required>
@@ -61,62 +59,70 @@
                     </form>
                 </div>
             </div>
-
         </section>
 
         <!-- Body section -->
-        <div class="container">
+        
 
             <!-- New books section -->
-            <section>
-                <div class="row">
-                    <div class="col s12">
-                        <h2>New released books <span class="new badge"></span></h2>
+            <section class="page-section new-book-section">
+                <div class="row">      
+                    <div class="col s12 new-books-title-wrapper">
+                        <h2 class="section-title new-section-title">New released books <span class="new badge new-section-badge"></span></h2>
                     </div>
-                </div>        
-
-                <!-- Books list -->
-                <div class="row">
-
-                    <div class="col s12">
-                    <div class="card">
-                            <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <div class="container">
+                        <!-- Books list -->
+                        <div class="col s12">
+                            <div class="card new-books-card">
+                                <div class="card-image">
+                                    <div class="crop-image">
+                                        <span class="books-price new-books-price">20 EUR</span>
+                                        <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " class='new-books-img books-img'>
+                                        <span class="card-title books-card-title">Loveless</span>
+                                    </div>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p class="flow-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I ... </p>
+                                </div>
+                                <a  class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
                             </div>
-                            <div class="card-content">
-                                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="card new-books-card">
+                                <div class="card-image">
+                                    <div class="crop-image">
+                                        <span class="books-price new-books-price">20 EUR</span>
+                                        <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" class='new-books-img books-img'>
+                                        <span class="card-title books-card-title">Card Title</span>
+                                    </div>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p class="flow-text">I am a very simple card. I am good at containing small bits of information. I am ...</p>
+                                </div>
+                                <a class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="card new-books-card">
+                                <div class="card-image">
+                                    <div class="crop-image">
+                                        <span class="books-price new-books-price">20 EUR</span>
+                                        <img src="{{ url_for('static', filename='img/sections/new_books/new-book-3.jpg') }} "  class='new-books-img books-img'>
+                                        <span class="card-title books-card-title">Card Title</span>
+                                    </div>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p class="flow-text">I am a very simple card. I am good at containing small bits of information. </p>
+                                </div>
+                                <a class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col s12">
-                    <div class="card">
-                            <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                            </div>
-                            <div class="card-content">
-                                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col s12">
-                    <div class="card">
-                            <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <span class="card-title">Card Title</span>
-                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                            </div>
-                            <div class="card-content">
-                                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>    
             </section>
 
@@ -156,7 +162,7 @@
                     
                 </div>    
             </section>
-        </div>
+        
         <!-- Page footer -->
         <footer class="page-footer">
 

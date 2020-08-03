@@ -107,3 +107,95 @@ input#search:focus{
 .colose-search-icon{
     margin: 14px 0px 0px 0px;
 }
+
+
+/**************** NEW BOOKS SECTION *****************/
+
+.new-book-section{
+    padding-bottom: 20px;
+}
+
+.section-title{
+    font-size: 23px;
+    text-transform: uppercase;
+    color: #c14d00;
+    margin: 2px 0px 35px 0px;
+}
+
+.new-section-title{
+    width: 301px;
+    text-align: left;
+    padding-top: 12px;
+    margin-left: 21px;
+}
+
+span.badge.new,
+span.badge.new:after{
+    background-color: #2bf3ff;
+}
+
+.new-books-title-wrapper{
+    padding: 20px .75em 10px .75em !important;
+}
+
+.new-book-section{
+    background-color: white;
+    background-image: url('../img/sm/new-section-title-bg.jpg');
+    background-repeat: no-repeat;
+    background-position-y: top;
+    background-color: #ff9752;
+}
+
+.new-books-card{
+    border: 2px solid #18effc;
+    margin: 25px 0px;
+}
+
+.new-books-add-icon{
+    color: #f29b60 !important;
+    background-color: #18effc;
+}
+
+.books-price{
+    position: absolute;
+    z-index: 20;
+    padding: 5px 10px;
+    margin-left: 22px;
+    font-weight: bold;
+}
+
+.new-books-price{
+    background-color: #18effc;
+    color: #f29b60;
+}
+
+.crop-image{
+    overflow: hidden;
+}
+
+.books-card-title{
+    font-weight: 400 !important;
+}
+
+.books-img{
+    margin: -44.875% 0;
+}
+
+.purchase-icon{
+    margin-bottom: -21px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    border-radius: 20px;
+}
+
+.books-purchase-icon{
+    background-color: #18effc;
+    color: #c14d00;
+}
+
+
+
+
