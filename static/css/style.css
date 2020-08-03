@@ -51,6 +51,21 @@ nav .brand-logo{
     left: 70%;
 }
 
+.side-nav a{
+    font-size: 25px !important;
+    color: #c14d00 !important;
+}
+
+.side-nav li{
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0px 10px 10px;
+
+}
+
+#sidenav-overlay{
+    z-index: 998 !important;
+}
+
 
 /************ WELCOMING SECTION **************/
 

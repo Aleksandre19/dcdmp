@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
             <div class="row menu_row">
                 <div class="col s12 menu_col">
                     <div class="navbar-fixed">
-                        <nav class="transparent ">
+                        <nav>
                             <div class="nav-wrapper valign-wrapper">     
                                 <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
                                 
@@ -30,15 +30,15 @@
                                     <li><a href="{{ url_for('my_list') }}">My List</a></li>
                                     <li><a href="{{ url_for('contact') }}">Conatact</a></li>
                                 </ul>
-                                <ul class="side-nav" id="mobile-demo">
-                                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                                </ul>
                             </div>
                         </nav>
                     </div>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                    </ul>
                 </div>
             </div>
         </header>
@@ -48,7 +48,7 @@
             <div class="welcoming-wrapper">
                 <div class="row ">
                     <div class="col s12">
-                        <h1 id="welcoming_text">Find And Collect Your Favoriet Books From All Over The World </h1>
+                        <h1 id="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
                     </div>
                     <form class="col s12">
                         <div class="input-field">
