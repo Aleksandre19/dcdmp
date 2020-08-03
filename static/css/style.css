@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Chonburi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
 
 html,
 body{
     width: 100%;
     height: 100%;
+    font-size: 16px;
+    font-family: Roboto;
+    margin: 0;
+    padding: 0;
 }
 
 /************ MENU ***********/
@@ -123,7 +128,7 @@ input#search:focus{
 }
 
 .new-section-title{
-    width: 301px;
+    width: 307px;
     text-align: left;
     padding-top: 12px;
     margin-left: 21px;
@@ -240,4 +245,40 @@ span.badge.new:after{
     position: absolute;
     bottom: 4px;
     background-color: #ff9752;
+}
+
+.page-footer{
+    padding-top: 0px;
+    background-color: #b64c06;
+}
+
+/* Footer */
+
+.footer-address{
+    font-size: 16px;
+    text-align: center;
+    margin: 0px !important;
+}
+
+.footer-copy{
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 0px !important;
+}
+
+.footer-star{
+    font-size: 25px;
+    text-align: center;
+}
+
+.str-address{
+    margin-top: 20px !important;
+}
+
+.divider{
+    margin: 10px 0px;
+}
+
+.footer-row{
+    margin-bottom: 0;
 }
