@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+ 
+       <!-- Header section -->
+       <header>
+            <!-- Menu -->
+            <div class="row menu_row">
+                <div class="col s12 menu_col">
+                    <div class="navbar-fixed">
+                        <nav>
+                            <div class="nav-wrapper valign-wrapper">     
+                                <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                                
+                                <a href="{{ url_for('home') }}" class="brand-logo">
+                                    <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                </a>
+                                                    
+                                <ul class="right hide-on-med-and-down">
+                                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Welcoming section -->
+        <section class="welcoming search_welcoming">
+           <h1 class="myList-welcoming-title">The Book Of The Day</h1>
+           <article class="container myList-container">
+                <a href="#">
+                    <div class="row">
+                        <div class="col s6">
+                            <figure>
+                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" alt="The book of the day" id="day_book_img">
+                            </figure>
+                        </div>
+                        <div class="col s6 ">
+                            <h2 class="day_book_title">Loveless</h2>
+                            <h3 class="day_book_auth">Alice Oseman</h3>
+                            <p class="day_book_text flow-text"> A tender account of Georgia and her vexed quest for first love, Loveless
+                            is a sprightly, affecting work from a writer at the top of her game.
+                            The fourth novel from the phenomenally talented Alice Oseman - one 
+                            of the most authentic and talked-about voices in contemporary YA</p>
+                        </div>
+                    </div>
+                </a>
+           </article>
+        </section>
+
+        <!-- Body section -->
+        
+
+            <!-- New books section -->
+            <section class="page-section new-book-section">
+                <div class="row">      
+                    <div class="col s12 books-title-wrapper">
+                        <h2 class="section-title new-section-title">New released books <span class="new badge new-section-badge"></span></h2>
+                    </div>
+                    <div class="container">
+                        <!-- Books list -->
+                        <div class="col s12">
+                            <div class="card new-books-card">
+                                <div class="card-image">
+                                    <div class="crop-image">
+                                        <span class="books-price new-books-price">20 EUR</span>
+                                        <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " class='new-books-img books-img'>
+                                        <span class="card-title books-card-title">Loveless</span>
+                                    </div>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p class="flow-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I ... </p>
+                                </div>
+                                <a  class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="card new-books-card">
+                                <div class="card-image">
+                                    <div class="crop-image">
+                                        <span class="books-price new-books-price">20 EUR</span>
+                                        <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" class='new-books-img books-img'>
+                                        <span class="card-title books-card-title">Card Title</span>
+                                    </div>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p class="flow-text">I am a very simple card. I am good at containing small bits of information. I am ...</p>
+                                </div>
+                                <a class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="card new-books-card">
+                                <div class="card-image">
+                                    <div class="crop-image">
+                                        <span class="books-price new-books-price">20 EUR</span>
+                                        <img src="{{ url_for('static', filename='img/sections/new_books/new-book-3.jpg') }} "  class='new-books-img books-img'>
+                                        <span class="card-title books-card-title">Card Title</span>
+                                    </div>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <p class="flow-text">I am a very simple card. I am good at containing small bits of information. </p>
+                                </div>
+                                <a class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </section>
+
+
+            <!-- Best books section -->
+            <section class="released-book-section">
+                <div class="row">
+                    <div class="container">
+                        <div class="col s12 books-title-wrapper">
+                            <h2 class="section-title released-section-title" >New released books <i class="material-icons money-icon">attach_money</i></h2>
+                        </div>
+                    
+                    <!-- Books list -->
+
+                        <div class="col s12">
+                            <div class="card released-books-card">
+                                <div class="card-image">
+                                    <span class="books-price released-books-price">20 EUR</span>
+                                    <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} ">
+                                    <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
+                            <div class="card released-books-card">
+                                <div class="card-image">
+                                    <span class="books-price released-books-price">20 EUR</span>
+                                    <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }} ">
+                                    <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
+                                </div>
+                            </div>
+                        </div>
+                   </div> 
+                </div>    
+            </section>
+        
+        <!-- Page footer -->
+        <footer class="page-footer">
+
+                <div class="row footer-row">
+
+                    <div class="col s12">
+                        <h4 class="footer-address str-address">Address: Book Store, 11111, blueplanet 1</h4>
+                    </div>
+
+                    <div class="footer-star">*</div>
+                    
+                    <div class="col s12">
+                        <h4 class="footer-address">Phone: +11 88 882 882 1</h4>
+                    </div>
+
+                    <div class="footer-star">*</div>  
+
+                    <div class="col s12">
+                         <h4 class="footer-address">Email: thisplanet@planet.com</h4>  
+                    </div>
+
+                    <div class="col s12 footer-copy">
+                        <div class="divider"></div>
+                        &#169 <span>Bookstor</span>
+                    </div>
+
+                </div>
+        </footer>
+
+
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".button-collapse").sideNav();
+        });
+    </script>
+</body>
+</html>
