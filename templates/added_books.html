@@ -74,8 +74,8 @@
             <div class="row container">
                 <div class="col s12 myList-tabs-wrapper">
                    <ul class="myList-tabs-ul">    
-                       <li class="myList-tabs"><a href="{{ url_for('my_list') }}" class="active-tab">My List</a></li>
-                       <li class="myList-tabs"><a href="{{ url_for('added_books') }}">Added</a></li>
+                       <li class="myList-tabs first-tab-li"><a href=" {{ url_for('my_list') }} ">My List</a></li>
+                       <li class="myList-tabs"><a href="#" class="active-tab">Added</a></li>
                        <li class="myList-tabs"><a href="#">Add Book</a></li>
                     </ul>
                     <div class="divider myList-tabs-top-line"></div>
@@ -255,7 +255,12 @@
                 swipeable: true
             });
 
+            /* Initializing collapsible collection for my list */
             $('.collapsible').collapsible();
+
+            /* Initializing image zooming function */
+            $('.materialboxed').materialbox();
+            
         });
     </script>
 </body>

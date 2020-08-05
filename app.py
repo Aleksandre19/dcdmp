@@ -25,6 +25,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route('/added_books')
+def added_books():
+    return render_template("added_books.html")
+
+
 
 
 

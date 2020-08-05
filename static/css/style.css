@@ -447,6 +447,18 @@ figure{
 }
 
 .collapsible-header-row{
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+
+/* Added Books List */
+
+.first-tab-li{
+    border-left: 1px solid #c14d00;
+    background-color: #c14d00;
+}
+
+.first-tab-li a{
+    background-color: white;
 }
 
