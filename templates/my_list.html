@@ -72,13 +72,144 @@
         <!-- New books section -->
         <section class="page-section my-list-section">
             <div class="row container">
-                <div class="col s12">
+                <div class="col s12 myList-tabs-wrapper">
                    <ul class="myList-tabs-ul">    
-                       <li class="myList-tabs"><a href="#" class="active">My List</a></li>
+                       <li class="myList-tabs"><a href="#" class="active-tab">My List</a></li>
                        <li class="myList-tabs"><a href="#">Added</a></li>
                        <li class="myList-tabs"><a href="#">Add Book</a></li>
                     </ul>
                     <div class="divider myList-tabs-top-line"></div>
+                </div>
+                <div class="col s12">
+                     <ul class="collapsible popout">
+                        <li>
+                            <div class="collapsible-header">
+                                <div class="row collapsible-header-row">
+                                    <div class="col s2">
+                                        <i class="material-icons">arrow_drop_down</i>
+                                    </div>
+
+                                    <div class="col s6">
+                                        Remain
+                                    </div>
+
+                                    <div class="col s2">
+                                        <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
+                                    </div>
+
+                                    <div class="col s2">
+                                        <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red"><i class="material-icons myList-edit-icon">highlight_off</i></a>
+                                    </div>
+                                </div>
+             
+                            </div>
+                            <div class="collapsible-body">
+                                <figure>
+                                    <a href="#">
+                                        <img src=" {{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " alt='The Book Title' class="myList-img" >
+                                    </a>    
+                                </figure>
+                                <ul class="myList-books-desc">
+                                    <li><span>Title</span> - Blood</li>
+                                    <li><span>Author</span> - Tony Brich</li>
+                                    <li><span>Language</span> - English</li>
+                                    <li><span>Published</span> - 01 Oct 2012</li>
+                                    <li><span>Price</span> - 20 EUR</li>
+                                </ul>
+                                <p class="myList-books-text">
+                                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </li>
+                        
+                     </ul>
+                     <ul class="collapsible popout">
+                        <li>
+                            <div class="collapsible-header">
+                                <div class="row collapsible-header-row">
+                                    <div class="col s2">
+                                        <i class="material-icons">arrow_drop_down</i>
+                                    </div>
+
+                                    <div class="col s6">
+                                        Remain In Love
+                                    </div>
+
+                                    <div class="col s2">
+                                        <a class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
+                                    </div>
+
+                                    <div class="col s2">
+                                        <a class="myList-icon-btns btn-floating btn-small waves-effect waves-light red"><i class="material-icons myList-edit-icon">highlight_off</i></a>
+                                    </div>
+                                </div>
+             
+                            </div>
+                            <div class="collapsible-body">
+                                <figure>
+                                    <a href="#">
+                                        <img src=" {{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " alt='The Book Title' class="myList-img" >
+                                    </a>    
+                                </figure>
+                                <ul class="myList-books-desc">
+                                    <li><span>Title</span> - Blood</li>
+                                    <li><span>Author</span> - Tony Brich</li>
+                                    <li><span>Language</span> - English</li>
+                                    <li><span>Published</span> - 01 Oct 2012</li>
+                                    <li><span>Price</span> - 20 EUR</li>
+                                </ul>
+                                <p class="myList-books-text">
+                                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </li>
+                        
+                     </ul> 
+                     <ul class="collapsible popout">
+                        <li>
+                            <div class="collapsible-header">
+                                <div class="row collapsible-header-row">
+                                    <div class="col s2">
+                                        <i class="material-icons">arrow_drop_down</i>
+                                    </div>
+
+                                    <div class="col s6">
+                                       In Love
+                                    </div>
+
+                                    <div class="col s2">
+                                        <a class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
+                                    </div>
+
+                                    <div class="col s2">
+                                        <a class="myList-icon-btns btn-floating btn-small waves-effect waves-light red"><i class="material-icons myList-edit-icon">highlight_off</i></a>
+                                    </div>
+                                </div>
+             
+                            </div>
+                            <div class="collapsible-body">
+                                <figure>
+                                    <a href="#">
+                                        <img src=" {{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " alt='The Book Title' class="myList-img" >
+                                    </a>    
+                                </figure>
+                                <ul class="myList-books-desc">
+                                    <li><span>Title</span> - Blood</li>
+                                    <li><span>Author</span> - Tony Brich</li>
+                                    <li><span>Language</span> - English</li>
+                                    <li><span>Published</span> - 01 Oct 2012</li>
+                                    <li><span>Price</span> - 20 EUR</li>
+                                </ul>
+                                <p class="myList-books-text">
+                                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </li>
+                        
+                     </ul>     
                 </div>
             </div>
             
@@ -127,7 +258,9 @@
             /* Initializing materialized css tabs in My List*/
             $('.tabs').tabs({
                 swipeable: true
-            })
+            });
+
+            $('.collapsible').collapsible();
         });
     </script>
 </body>

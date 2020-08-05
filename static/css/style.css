@@ -9,6 +9,7 @@ body{
     font-family: Roboto;
     margin: 0;
     padding: 0;
+    color: #777777;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -363,6 +364,9 @@ figure{
 
 /* Tabs */
 
+.myList-tabs-wrapper{
+    margin-bottom: 25px;
+}
 
 .myList-tabs {
     display: inline-block;
@@ -388,7 +392,7 @@ figure{
     -o-border-radius: 0px 20px 0px 0px;
 }
 
-.active{
+.active-tab{
     color: white !important;
     background-color: #c14d00;
 }
@@ -413,6 +417,36 @@ figure{
     border-left: 1px solid #c14d00;
 }
 
-/* .myList-tabs{
-    background-color: #c14d00;
-} */
+/* My List Books Collections */
+
+.btn-floating{
+    width: 25px;
+    height: 25px;
+}
+
+.myList-edit-icon{
+    margin: -8px 0px 0px -4px;
+}
+
+.myList-books-text{
+    text-indent: 18px;
+}
+
+.myList-books-desc{
+    color: #777777;
+    margin-top: 20px;
+}
+
+.myList-books-desc span{
+    font-weight: bold;
+}
+
+
+.collapsible-header{
+    padding-bottom: 0;
+}
+
+.collapsible-header-row{
+    margin-bottom: 8px;
+}
+
