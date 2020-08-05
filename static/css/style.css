@@ -360,3 +360,59 @@ figure{
     overflow: hidden;
     color: white;
 }
+
+/* Tabs */
+
+
+.myList-tabs {
+    display: inline-block;
+    float: left;
+    list-style: none;
+    text-align: center;
+    width: 32%;
+    height: 45px;
+}
+
+.myList-tabs a{
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    border-top: 1px solid #c14d00;
+    border-right: 1px solid #c14d00;
+    border-bottom: 1px solid #c14d00;
+    color: #c14d00;
+    text-transform: uppercase;
+    border-radius: 0px 20px 0px 0px;
+    -webkit-border-radius: 0px 20px 0px 0px;
+    -moz-border-radius: 0px 20px 0px 0px;
+    -o-border-radius: 0px 20px 0px 0px;
+}
+
+.active{
+    color: white !important;
+    background-color: #c14d00;
+}
+.row .col.s3{
+    width: none !important;
+}
+
+.container{
+    margin-top: 40px;
+}
+
+.divider{
+    margin: 0;
+    background-color: #c14d00;
+    position: relative;
+    top: -45px;
+    left: 0px;
+    width: 90%;
+}
+
+.first-tab{
+    border-left: 1px solid #c14d00;
+}
+
+/* .myList-tabs{
+    background-color: #c14d00;
+} */
