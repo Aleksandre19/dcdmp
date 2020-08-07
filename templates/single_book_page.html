@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/nouislider/nouislider.min.css') }}">
+    <title>Document</title>
+</head>
+<body>
+ 
+       <!-- Header section -->
+       <header>
+            <!-- Menu -->
+            <div class="row menu_row">
+                <div class="col s12 menu_col">
+                    <div class="navbar-fixed">
+                        <nav>
+                            <div class="nav-wrapper valign-wrapper">     
+                                <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                                
+                                <a href="{{ url_for('home') }}" class="brand-logo">
+                                    <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                </a>
+                                                    
+                                <ul class="right hide-on-med-and-down">
+                                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Add Book Welcoming section -->
+        <section class="add-book-welcoming">
+            <div class="row ">
+                    <form class="col s12 add-book-search-form">
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
+                            <i class="material-icons colose-search-icon">close</i> 
+                        </div>  
+                    </form>
+                </div>         
+        </section>
+
+        <!-- Body section -->
+        
+
+            <!-- Add books section -->
+            <section class="page-section add-book-section">
+                <div class="container single-container">
+                    <div class="row">
+                        <div class="col s12">
+                                <figure>   
+                                    <div class="card released-books-card">
+                                        <div class="card-image">
+                                            <span class="books-price released-books-price">20 EUR</span>
+                                            <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }} " class="materialboxed">
+                                            <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                            <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
+                                        </div>
+                                    </div> 
+                                </figure>
+
+                                <div class="divider single-top-divider"></div>
+
+                                <ul class="single-books-desc">
+                                    <li><span>Title</span> - Blood</li>
+                                    <li><span>Author</span> - Tony Brich</li>
+                                    <li><span>Language</span> - English</li>
+                                    <li><span>Published</span> - 01 Oct 2012</li>
+                                    <li><span>Price</span> - 20 EUR</li>
+                                </ul>
+
+                                <div class="divider"></div>
+                                
+                                <p class="single-books-text">
+                                   Blood,  a debut novel by Tony Birch, has been shortlisted for the 2012 Miles Franklin Award.
+                                   In the blurb at Fishpond, it’s described as ‘an epic moral fable, a gothic odyssey set on the
+                                   back roads of Australia’.  It’s the story of two kids, thirteen-year-old Jesse and his
+                                   little sister Rachel, aged eight.  They have the kind of mother they’d be better off without. 
+                                   Her name is Gwen. That’s not me, sitting in judgement.  It’s Jesse, who narrates this story, who tells us so.
+                                   Gwen’s life is a disaster, and her adolescent son has finall
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        <!-- Page footer -->
+        <footer class="page-footer">
+
+                <div class="row footer-row">
+
+                    <div class="col s12">
+                        <h3 class="footer-address str-address">Address: Book Store, 11111, blueplanet 1</h3>
+                    </div>
+
+                    <div class="footer-star">*</div>
+                    
+                    <div class="col s12">
+                        <h3 class="footer-address">Phone: +11 88 882 882 1</h3>
+                    </div>
+
+                    <div class="footer-star">*</div>  
+
+                    <div class="col s12">
+                         <h3 class="footer-address">Email: thisplanet@planet.com</h3>  
+                    </div>
+
+                    <div class="col s12 footer-copy">
+                        <div class="divider"></div>
+                        &#169 <span>Bookstor</span>
+                    </div>
+
+                </div>
+        </footer>
+
+
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src=" {{ url_for('static', filename='js/nouislider/nouislider.min.js') }} "></script>
+    <script>
+        $(document).ready(function(){
+            $(".button-collapse").sideNav();
+
+             /* Initializing image zooming function */
+            $('.materialboxed').materialbox();
+
+            $('.datepicker').datepicker();
+        });
+        
+        /* Initialising Datapicker */
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false, // Close upon selecting a date,
+            container: undefined // ex. 'body' will append picker to body
+        });
+
+        /* The code for fixing datapicker's bag */
+        document.getElementById("matfix").addEventListener("click", function(e) {
+            e.stopPropagation();
+        });
+        
+        /* Initialising the materialize select element */
+        $('select').material_select();
+
+        /* Initialising nouislider */
+        var slider = document.getElementById('test-slider');
+        noUiSlider.create(slider, {
+        start: [20, 80],
+        connect: true,
+        step: 1,
+        orientation: 'horizontal', // 'horizontal' or 'vertical'
+        range: {
+            'min': 0,
+            'max': 100
+        },
+        format: wNumb({
+            decimals: 0
+        })
+        });
+
+
+        $('.tooltipped').tooltip({
+            exitDelay: 2
+        });
+
+        // $('ul.tabs').tabs();
+
+    </script>
+</body>
+</html>

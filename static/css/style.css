@@ -412,7 +412,7 @@ figure{
     margin-top: 40px;
 }
 
-.divider{
+.myList-tabs-top-line{
     margin: 0;
     background-color: #c14d00;
     position: relative;
@@ -442,16 +442,19 @@ figure{
 }
 
 .myList-books-text,
-.search-books-text{
+.search-books-text,
+.single-books-text{
     text-indent: 18px;
 }
 
-.myList-books-desc{
+.myList-books-desc,
+.single-books-desc{
     color: #777777;
     margin-top: 20px;
 }
 
-.myList-books-desc span{
+.myList-books-desc span,
+.single-books-desc span{
     font-weight: bold;
 }
 
@@ -751,4 +754,26 @@ input[type=file].valid:not(.browser-default)+label{
 .for-margin{
     display: block;
     margin: 0px 0px 40px 0px;
+}
+
+
+.single-container{
+    background-color: white;
+    padding: 20px 30px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
+    -moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
+    -o-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
+}
+
+.single-books-desc{
+    margin: 30px 0px 30px 0px;
+}
+
+.single-books-text{
+    margin-top: 30px;
+}
+
+.single-top-divider{
+    margin-top: 55px;
 }
