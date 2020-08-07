@@ -505,13 +505,15 @@ figure{
     padding-bottom: 20px;
 }
 
-.add-book-title-icon{
+.add-book-title-icon,
+.contact-title-icon{
     color: #2bf3ff;
     float: left;
     margin: -4px 8px 0px 5px;
 }
 
-.add-section-title{
+.add-section-title,
+.contact-section-title{
     width: 307px;
     text-align: left;
     padding-top: 26px;
@@ -673,6 +675,35 @@ input[type=file].valid:not(.browser-default)+label{
 
 .search-row{
     margin-bottom: 0;
+}
+
+
+/**************** Contact Page ******************/
+
+
+.contact-section-title{
+    text-transform: capitalize;
+    text-align: center;
+    line-height: 35px;
+}
+
+
+.contact-icon-wrapper{
+    text-align: center;
+}
+
+.contact-title-icon{
+    width: 100%;
+    text-align: center;
+}
+
+.google-maps-wrapper{
+    text-align: center;
+}
+
+#google-img{
+    width: 300px;
+    margin: 20px auto;
 }
 
 

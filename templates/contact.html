@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/nouislider/nouislider.min.css') }}">
+    <title>Document</title>
+</head>
+<body>
+ 
+       <!-- Header section -->
+       <header>
+            <!-- Menu -->
+            <div class="row menu_row">
+                <div class="col s12 menu_col">
+                    <div class="navbar-fixed">
+                        <nav>
+                            <div class="nav-wrapper valign-wrapper">     
+                                <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                                
+                                <a href="{{ url_for('home') }}" class="brand-logo">
+                                    <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                </a>
+                                                    
+                                <ul class="right hide-on-med-and-down">
+                                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Add Book Welcoming section -->
+        <section class="add-book-welcoming">
+            <div class="row ">
+                    <form class="col s12 add-book-search-form">
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
+                            <i class="material-icons colose-search-icon">close</i> 
+                        </div>  
+                    </form>
+                </div>         
+        </section>
+
+        <!-- Body section -->
+        
+
+            <!-- Add books section -->
+            <section class="page-section add-book-section">
+                <div class="container">
+                    <h1 class="section-title contact-section-title">
+                         In Case Any Question Please Feel Free To Ask It 
+                    </h1>
+                    <div class="row">
+                        <div class="col s12 contact-icon-wrapper">
+                            <i class="medium material-icons contact-title-icon">question_answer</i>
+                        </div>
+                        <div class="col s12 contact-map-wrapper">
+                              <div class="google-maps-wrapper">
+                                   <img src="{{ url_for('static', filename='img/sm/contact/google-map-image.jpg') }} " id='google-img' >
+                              </div>  
+                        </div>
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input type="text" name="user_name" id="user_name" class="validate">
+                                    <label for="user_name">Your Name</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">email</i>
+                                    <input type="email" name="email" id="email" class="validate">
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">description</i>
+                                    <textarea id="textarea1" class="materialize-textarea tooltipped add-book-textarea" data-position="bottom" data-tooltip="Return -> new line" minlength="3" required></textarea>
+                                    <label for="textarea1">Add Description</label>
+                                </div>
+                                <div class="col s12 add-book-button-margin">
+                                    <input type="submit" name="add-book" id="add-book" class="waves-effect waves-light btn-large add-book-submit-btn" value="Add Book">
+                                </div>
+                               
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        
+        <!-- Page footer -->
+        <footer class="page-footer">
+
+                <div class="row footer-row">
+
+                    <div class="col s12">
+                        <h3 class="footer-address str-address">Address: Book Store, 11111, blueplanet 1</h3>
+                    </div>
+
+                    <div class="footer-star">*</div>
+                    
+                    <div class="col s12">
+                        <h3 class="footer-address">Phone: +11 88 882 882 1</h3>
+                    </div>
+
+                    <div class="footer-star">*</div>  
+
+                    <div class="col s12">
+                         <h3 class="footer-address">Email: thisplanet@planet.com</h3>  
+                    </div>
+
+                    <div class="col s12 footer-copy">
+                        <div class="divider"></div>
+                        &#169 <span>Bookstor</span>
+                    </div>
+
+                </div>
+        </footer>
+
+
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src=" {{ url_for('static', filename='js/nouislider/nouislider.min.js') }} "></script>
+    <script>
+        $(document).ready(function(){
+            $(".button-collapse").sideNav();
+
+             /* Initializing image zooming function */
+            $('.materialboxed').materialbox();
+
+            $('.datepicker').datepicker();
+        });
+        
+        /* Initialising Datapicker */
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false, // Close upon selecting a date,
+            container: undefined // ex. 'body' will append picker to body
+        });
+
+        /* The code for fixing datapicker's bag */
+        document.getElementById("matfix").addEventListener("click", function(e) {
+            e.stopPropagation();
+        });
+        
+        /* Initialising the materialize select element */
+        $('select').material_select();
+
+        /* Initialising nouislider */
+        var slider = document.getElementById('test-slider');
+        noUiSlider.create(slider, {
+        start: [20, 80],
+        connect: true,
+        step: 1,
+        orientation: 'horizontal', // 'horizontal' or 'vertical'
+        range: {
+            'min': 0,
+            'max': 100
+        },
+        format: wNumb({
+            decimals: 0
+        })
+        });
+
+
+        $('.tooltipped').tooltip({
+            exitDelay: 2
+        });
+
+        // $('ul.tabs').tabs();
+
+    </script>
+</body>
+</html>
