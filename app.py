@@ -30,6 +30,10 @@ def added_books():
     return render_template("added_books.html")
 
 
+@app.route('/book_search')
+def book_search():
+    return  render_template("book_search.html")
+
 
 
 
