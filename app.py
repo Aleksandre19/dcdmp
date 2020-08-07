@@ -34,6 +34,10 @@ def added_books():
 def book_search():
     return  render_template("book_search.html")
 
+@app.route('/auth')
+def auth():
+    return render_template("auth.html")
+
 
 
 

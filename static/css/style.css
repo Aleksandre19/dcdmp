@@ -28,7 +28,8 @@ h1,h2,h3,h4,h5,h6{
     padding: 0;
 }
 
-.menu_row{
+.menu_row,
+.auth-row{
     margin-bottom: 0;
 }
 
@@ -490,6 +491,7 @@ figure{
     background-size: cover;
 }
 
+
 .add-book-search-form{
     position: absolute;
     top: 50%;
@@ -633,15 +635,19 @@ input[type=file].valid:not(.browser-default)+label{
 
 /*********** Search Book Section **************/
 
-.search-book-section{
+.search-book-section,
+.auth-section{
     width: 100%;
     min-height: 100%;
     position: relative;
-    background-image: url('../img/sm/search/search_section_bg.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.search-book-section{
+    background-image: url('../img/sm/search/search_section_bg.jpg');
 }
 
 .search-book-search-form{
@@ -707,4 +713,42 @@ input[type=file].valid:not(.browser-default)+label{
 }
 
 
+/************** Authentication Page ******************/ 
 
+.auth-section{
+    background-image: url("../img/sm/auth/auth-page-bg.jpg");
+}
+
+.auth-text-wrapper{
+    height: 360px;
+    margin-top: 60px;
+    background-image: url("../img/sm/auth/auth-text-bg.png");
+    background-repeat: no-repeat;
+    background-position-x: center
+}
+
+.auth-text{
+    font-size: 22px;
+    color: #c14d00;
+    line-height: 39px;
+    text-align: center;
+    margin: 79px auto;
+    width: 280px;
+}
+
+.auth-form{
+    padding: 25px 15px 10px 15px !important;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.auth-form-wrapper{
+    width: 340px;
+    margin: 0 auto;
+}
+
+
+.for-margin{
+    display: block;
+    margin: 0px 0px 40px 0px;
+}
