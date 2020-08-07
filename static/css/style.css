@@ -247,7 +247,8 @@ span.badge.new:after{
     margin-right: 2px;
 }
 
-.released-books-card{
+.released-books-card,
+.search-book-card{
     margin: 20px 0px;
     border: 3px solid #ff9752;
 }
@@ -439,7 +440,8 @@ figure{
     margin: 0px 0px 0px 15px
 }
 
-.myList-books-text{
+.myList-books-text,
+.search-books-text{
     text-indent: 18px;
 }
 
@@ -633,7 +635,8 @@ input[type=file].valid:not(.browser-default)+label{
     width: 100%;
     min-height: 100%;
     position: relative;
-    background-image: url('../img/sm/add_book/add-book-section-bg.jpg');
+    background-image: url('../img/sm/search/search_section_bg.jpg');
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -645,6 +648,31 @@ input[type=file].valid:not(.browser-default)+label{
 
 .search-book-container{
     margin-top: 0;
+}
+
+.search-books-card{
+    margin: 15px;
+}
+
+.search-result-container{
+    background-color: rgba(132, 132, 132, .5);
+    margin-bottom: 50px;
+}
+
+.search-card-image{
+    margin-top: 30px;
+}
+
+.search-books-text{
+    color:white;
+    width: 80%;
+    margin:70px auto;
+    font-size: 18px;
+    line-height: 29px;
+}
+
+.search-row{
+    margin-bottom: 0;
 }
 
 

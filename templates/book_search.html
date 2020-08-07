@@ -46,7 +46,7 @@
 
         <!-- Add Book Welcoming section -->
         <section class="search-book-section">
-            <div class="row ">
+            <div class="row  search-row">
                 <div class="container search-book-container">
                     <form class="col s12 search-book-search-form">
                         <div class="input-field">
@@ -55,8 +55,19 @@
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
                     </form>
-                    <div class="col s12">
-                        opokpwokepq
+                    <div class="col s12 search-result-container">
+                         <div class="card search-books-card">
+                            <div class="card-image search-card-image">
+                                <span class="books-price released-books-price">20 EUR</span>
+                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " class="materialboxed">
+                                <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
+                            </div>
+                        </div>
+                        <p class="search-books-text">
+                            Blood,  a debut novel by Tony Birch, has been shortlisted for the 2012 Miles Franklin Award.
+                            In the blurb at Fishpond, it’s described as ‘an epic moral fable, a gothic ....         
+                         </p>
                     </div> 
                 </div>   
             </div>         
