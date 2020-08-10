@@ -792,18 +792,19 @@ input[type=file].valid:not(.browser-default)+label{
 
 /************* Tablet Devices ***************/
 
-/* Home Page */
-
 @media(min-width: 600px){
+
+    /* Home Page */
+
     .home-welcoming{
         min-height: 45%;
     }
 
-    .home-search-input{
+    #search{
         margin: 0 auto !important;
     }
 
-    .home-brand-logo{
+    .brand-logo{
         left: 85% !important;
     }
 
@@ -813,5 +814,24 @@ input[type=file].valid:not(.browser-default)+label{
 
     .released-book-section{
         background-image: url('../img/md/md-best-title-bg.jpg');
+    }
+
+    /* Contatc Page */
+
+    .contact-section-title{
+        width: 100%;
+    }
+
+
+    /* Authentication Page */
+
+    .auth-form-wrapper{
+        width: 500px;
+    }
+
+    /* Search Page */
+
+    .search-result-container{
+        margin-top: 50px;
     }
 }
