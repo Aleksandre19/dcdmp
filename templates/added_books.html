@@ -44,21 +44,23 @@
         </header>
 
         <!-- My List Welcoming section -->
-        <section class="welcoming search_welcoming">
+        <section class="welcoming myList-welcoming">
            <h1 class="myList-welcoming-title">The Book Of The Day</h1>
            <article class="container myList-container">
                 <a href="#">
                     <div class="row">
-                        <div class="col s6">
-                            <figure>
-                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" alt="The book of the day" id="day_book_img">
+                        <div class="col s4">
+                            <figure class="day-book-figure">
+                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" alt="The book of the day" class="day_book_img">
                             </figure>
                         </div>
-                        <div class="col s6 ">
+                        <div class="col s8 ">
                             <h2 class="day_book_title">Loveless</h2>
                             <h3 class="day_book_auth">Alice Oseman</h3>
                             <p class="day_book_text flow-text"> A tender account of Georgia and her vexed quest for first love, Loveless
                             is a sprightly, affecting work from a writer at the top of her game.
+                            The fourth novel from the phenomenally talented Alice Oseman - one 
+                            of the most authentic and talked-about voices in contemporary writer at the top of her game.
                             The fourth novel from the phenomenally talented Alice Oseman - one 
                             of the most authentic and talked-about voices in contemporary YA</p>
                         </div>
@@ -81,23 +83,23 @@
                     <div class="divider myList-tabs-top-line"></div>
                 </div>
                 <div class="col s12">
-                      <ul class="collapsible" data-collapsible="accordion">
+                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
                             <div class="collapsible-header">
-                                <div class="row collapsible-header-row">
-                                    <div class="col s2">
+                                <div class="row collapsible-header-row lg-myList-row">
+                                    <div class="col s2 l1">
                                         <i class="material-icons">arrow_drop_down</i>
                                     </div>
 
-                                    <div class="col s6">
-                                        Remain
+                                    <div class="col s6 l9">
+                                        <span class="myList-book-span myList-book-name">Remain</span> <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-auth hide-on-med-and-down"> Shota Orujashvili </span>  <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-price hide-on-med-and-down"> 20 EUR </span>
                                     </div>
 
-                                    <div class="col s2">
+                                    <div class="col s2 l1">
                                         <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
                                     </div>
 
-                                    <div class="col s2">
+                                    <div class="col s2 l1">
                                         <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
                                     </div>
                                 </div>
@@ -122,23 +124,24 @@
                         </li>
                         
                      </ul>
+
                       <ul class="collapsible" data-collapsible="accordion">
                         <li>
                             <div class="collapsible-header">
-                                <div class="row collapsible-header-row">
-                                    <div class="col s2">
+                                <div class="row collapsible-header-row lg-myList-row">
+                                    <div class="col s2 l1">
                                         <i class="material-icons">arrow_drop_down</i>
                                     </div>
 
-                                    <div class="col s6">
-                                        Remain
+                                    <div class="col s6 l9">
+                                         <span class="myList-book-span myList-book-name">Remain</span> <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-auth hide-on-med-and-down"> Shota Orujashvili </span>  <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-price hide-on-med-and-down"> 20 EUR </span>
                                     </div>
 
-                                    <div class="col s2">
+                                    <div class="col s2 l1">
                                         <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
                                     </div>
 
-                                    <div class="col s2">
+                                    <div class="col s2 l1">
                                         <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
                                     </div>
                                 </div>
@@ -163,23 +166,24 @@
                         </li>
                         
                      </ul>
+
                       <ul class="collapsible" data-collapsible="accordion">
                         <li>
                             <div class="collapsible-header">
-                                <div class="row collapsible-header-row">
-                                    <div class="col s2">
+                                <div class="row collapsible-header-row lg-myList-row">
+                                    <div class="col s2 l1">
                                         <i class="material-icons">arrow_drop_down</i>
                                     </div>
 
-                                    <div class="col s6">
-                                        Remain
+                                    <div class="col s6 l9">
+                                         <span class="myList-book-span myList-book-name ">Remain</span> <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-auth hide-on-med-and-down"> Shota Orujashvili </span>  <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-price hide-on-med-and-down"> 20 EUR </span>
                                     </div>
 
-                                    <div class="col s2">
+                                    <div class="col s2 l1">
                                         <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
                                     </div>
 
-                                    <div class="col s2">
+                                    <div class="col s2 l1">
                                         <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
                                     </div>
                                 </div>
@@ -204,6 +208,7 @@
                         </li>
                         
                      </ul>
+                     
                        
                 </div>
             </div>

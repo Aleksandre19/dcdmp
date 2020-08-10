@@ -345,7 +345,7 @@ figure{
     margin: 0;
 }
 
-#day_book_img{
+.day_book_img{
     width: 100%;
     margin: 15px;
 }
@@ -971,5 +971,42 @@ input[type=file].valid:not(.browser-default)+label{
     .add-book-row{
         margin-top: 70px;
     }
+
+
+    /* My List Page */
+
+    .day_book_img{
+        width: auto;
+    }
+
+    .day-book-figure{
+        text-align: center;
+    }
+
+    .myList-container{
+        width: 65%;
+    }
+
+    .day_book_text{
+        height: 315px;
+    }
+
+    .myList-welcoming-title{
+        padding-bottom: 25px;
+    }
+
+    .myList-tabs-ul{
+        margin: 60px 0px 50px 0px;
+    }
+
+    .lg-myList-row{
+        width: 100%;
+    }
+
+    .myList-book-span{
+        padding:0px 30px 0px 30px;
+    }
+
+
 
 }
