@@ -249,7 +249,8 @@ span.badge.new:after{
 }
 
 .released-books-card,
-.search-book-card{
+.search-book-card,
+.single-card{
     margin: 20px 0px;
     border: 3px solid #ff9752;
 }
@@ -312,7 +313,8 @@ span.badge.new:after{
 
 /* My List Welcoming Section */
 
-.search_welcoming{
+.search_welcoming,
+.myList-welcoming{
     padding-bottom: 40px;
     min-height: 50%;
     background-image: url('../img/sm/mylist/myList_welcoming_bg.jpg');
@@ -484,7 +486,9 @@ figure{
 
 /* Header */
 
-.add-book-welcoming{
+.add-book-welcoming,
+.contact-welcoming,
+.single-welcoming{
     width: 100%;
     height: 150px;
     position: relative;
@@ -495,7 +499,9 @@ figure{
 }
 
 
-.add-book-search-form{
+.add-book-search-form,
+.contact-search-form,
+.single-search-form{
     position: absolute;
     top: 50%;
     left: 50% !important;
@@ -505,7 +511,9 @@ figure{
 
 /* Section content */
 
-.add-book-section{
+.add-book-section,
+.contact-section,
+.single-section{
     min-height: 100%;
     padding-bottom: 20px;
 }
@@ -766,14 +774,44 @@ input[type=file].valid:not(.browser-default)+label{
     -o-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
 }
 
+
 .single-books-desc{
     margin: 30px 0px 30px 0px;
 }
+
 
 .single-books-text{
     margin-top: 30px;
 }
 
+
 .single-top-divider{
     margin-top: 55px;
+}
+
+
+/************* Tablet Devices ***************/
+
+/* Home Page */
+
+@media(min-width: 600px){
+    .home-welcoming{
+        min-height: 45%;
+    }
+
+    .home-search-input{
+        margin: 0 auto !important;
+    }
+
+    .home-brand-logo{
+        left: 85% !important;
+    }
+
+    .new-book-section{
+        background-image: url('../img/md/md-released-title-bg.jpg');
+    }
+
+    .released-book-section{
+        background-image: url('../img/md/md-best-title-bg.jpg');
+    }
 }
