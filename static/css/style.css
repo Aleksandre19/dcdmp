@@ -890,8 +890,8 @@ input[type=file].valid:not(.browser-default)+label{
     }
 
     .welcoming{
-        min-height: 86%;
-         background-image: url('../img/lg/home/lg-welcoming-bg.jpg');
+        min-height: 60%;
+        background-image: url('../img/lg/home/lg-welcoming-bg.jpg');
     }
 
     .welcoming-wrapper {
@@ -902,8 +902,8 @@ input[type=file].valid:not(.browser-default)+label{
     }
 
     .welcoming_text{
-        font-size: 70px;
-        line-height: 120px;
+        font-size: 64px;
+        line-height: 90px;
         margin-bottom: 30px;
     }
 
@@ -959,6 +959,17 @@ input[type=file].valid:not(.browser-default)+label{
 
     .footer-address{
         margin: 30px !important;
+    }
+
+
+    /* Add Book Page */
+
+    .add-section-title{
+        margin: 60px 0px 35px 0px;
+    }
+
+    .add-book-row{
+        margin-top: 70px;
     }
 
 }
