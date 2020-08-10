@@ -64,6 +64,10 @@ nav .brand-logo{
     color: #c14d00 !important;
 }
 
+.nav-active-link{
+    border-bottom: 2px solid #18effc;
+}
+
 .side-nav li{
     border-bottom: 1px solid #e0e0e0;
     padding: 10px 0px 10px 10px;
@@ -184,6 +188,7 @@ span.badge.new:after{
     background-color: #18effc;
 }
 
+
 .books-price{
     position: absolute;
     z-index: 20;
@@ -226,7 +231,8 @@ span.badge.new:after{
 
 /* New Released Book Section */
 
-.released-book-section{
+.released-book-section,
+.best-book-section{
     padding: 0px 0px 20px 0px;
     background-color: white;
     background-image: url('../img/sm/released-books-top-bg.jpg');
@@ -243,7 +249,8 @@ span.badge.new:after{
     border-radius: 15px;
 }
 
-.released-section-title{
+.released-section-title,
+.best-book-title{
     text-align: right;
     margin-right: 2px;
 }
@@ -812,7 +819,7 @@ input[type=file].valid:not(.browser-default)+label{
         background-image: url('../img/md/md-released-title-bg.jpg');
     }
 
-    .released-book-section{
+    .best-book-section{
         background-image: url('../img/md/md-best-title-bg.jpg');
     }
 
@@ -834,4 +841,124 @@ input[type=file].valid:not(.browser-default)+label{
     .search-result-container{
         margin-top: 50px;
     }
+
+    .card-content p{
+        font-size: 16px;
+    }
+}
+
+/************ Desktop Devices *************/
+
+@media(min-width: 992px){
+
+    /* Home Page */
+    .menu-container{
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+
+    .brand-logo{
+        left: 73% !important;
+    }
+
+
+    #logo{
+        width: 300px;
+    }
+
+
+    .navbar-fixed nav{
+        position: static;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        background-color: transparent;
+    }
+
+    .nav-wrapper{
+        background-color: transparent;
+    }
+
+    nav ul a{
+        text-transform: uppercase;
+        color: #2e2e2e;
+    }
+
+    .add_book_color{
+        color: #e01616;
+    }
+
+    .welcoming{
+        min-height: 86%;
+         background-image: url('../img/lg/home/lg-welcoming-bg.jpg');
+    }
+
+    .welcoming-wrapper {
+        width: 65%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .welcoming_text{
+        font-size: 70px;
+        line-height: 120px;
+        margin-bottom: 30px;
+    }
+
+    .home-search-input{
+        margin-top: 30px;
+    }
+
+    .search-icon{
+        margin: 10px 0px 0px 66px;
+    }
+
+    .colose-search-icon{
+        margin:14px 64px 0px 0px;
+    }
+
+    .new-book-section{
+        background-image: url('../img/lg/home/lg-new-top-bg.jpg') !important;
+    }
+
+    .container{
+        margin-top: 0;
+    }
+
+    .new-section-title{
+        margin-top: 77px;
+    }
+
+    .card-content p{
+        font-size: 16px;
+    }
+
+    .big-card{
+        height: 600px;
+    }
+
+    .big-card{
+        height: 544px
+    }
+
+
+    /* Best Sellings Books Section */
+
+    .best-book-section{
+        margin-top: 60px;
+        background-image: url('../img/lg/home/lg-best-top-bg.jpg') !important;
+    }
+
+    .best-book-title{
+        margin-top: -25px;
+    }
+
+    /* Footer */
+
+    .footer-address{
+        margin: 30px !important;
+    }
+
 }
