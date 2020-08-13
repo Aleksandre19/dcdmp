@@ -14,40 +14,73 @@
        <!-- Header section -->
        <header>
             <!-- Menu -->
-            <div class="row menu_row">
-                <div class="col s12 menu_col">
-                    <div class="navbar-fixed">
-                        <nav>
-                            <div class="nav-wrapper valign-wrapper">     
-                                <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
-                                
-                                <a href="{{ url_for('home') }}" class="brand-logo">
-                                    <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
-                                </a>
-                                                    
-                                <ul class="right hide-on-med-and-down">
-                                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                                </ul>
-                            </div>
-                        </nav>
+            <div class="menu-container">
+                <div class="row menu_row">
+                    <div class="col s12 menu_col">
+                        <div class="navbar-fixed">
+                            <nav class="main-nav">
+                                <div class="nav-wrapper valign-wrapper">     
+                                    <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                                    
+                                    <a href="{{ url_for('home') }}" class="brand-logo home-brand-logo hide-on-large-only">
+                                        <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                    </a>
+
+                                    <!--  Logo for Desktop devices -->
+                                    <a href="{{ url_for('home') }}" class="brand-logo home-brand-logo hide-on-med-and-down show-on-large">
+                                        <img src="{{ url_for('static', filename='img/lg/home/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                    </a>
+                                                        
+                                    <ul class="right hide-on-med-and-down">
+                                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                                        <li><a href="{{ url_for('add_book') }}" class="add_book_color">Add Book</a></li>
+                                        <li class="nav-active-link"><a href="{{ url_for('my_list') }}">My List</a></li>
+                                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <ul class="side-nav" id="mobile-demo">
+                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                            <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                            <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                            <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                        </ul>
                     </div>
-                    <ul class="side-nav" id="mobile-demo">
-                        <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                    </ul>
                 </div>
             </div>
         </header>
+        <!-- Search Welcoming section -->
+        <section class="welcoming search-welcoming hide-on-med-and-down">
+            <div class="container">
+                <h1 class="search-welcoming-title">The Most Searched Book</h1>
+            </div>
+           <article class="container search-container">        
+                <a href="#">
+                    <div class="row">
+                        <div class="col s4">
+                            <figure class="day-book-figure">
+                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" alt="The book of the day" class="day_book_img">
+                            </figure>
+                        </div>
+                        <div class="col s8 ">
+                            <h2 class="day_book_title">Loveless</h2>
+                            <h3 class="day_book_auth">Alice Oseman</h3>
+                            <p class="day_book_text flow-text"> A tender account of Georgia and her vexed quest for first love, Loveless
+                            is a sprightly, affecting work from a writer at the top of her game.
+                            The fourth novel from the phenomenally talented Alice Oseman - one 
+                            of the most authentic and talked-about voices in contemporary writer at the top of her game.
+                            The fourth novel from the phenomenally talented Alice Oseman - one 
+                            of the most authentic and talked-about voices in contemporary YA</p>
+                        </div>
+                    </div>
+                </a>
+           </article>
+        </section>
 
-        <!-- Add Book Welcoming section -->
-        <section class="search-book-section">
-            <div class="row  search-row">
-                <div class="container search-book-container">
+         <!-- Search Page's Welcoming section for tablets and down devices  -->
+        <section class="search-book-section hide-on-large-only">
+            <div class="row search-row">
                     <form class="col s12 search-book-search-form">
                         <div class="input-field">
                             <input id="search" type="search" required>
@@ -55,45 +88,49 @@
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
                     </form>
-                    <div class="col s12 search-result-container">
-                         <div class="card search-books-card">
-                            <div class="card-image search-card-image">
-                                <span class="books-price released-books-price">20 EUR</span>
-                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " class="materialboxed">
-                                <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
-                            </div>
+                     <div class="col search-book-container">
+                        <div class="search-result-container">
+                            <div class="row">
+                                <div class="col search-col">   
+                                    <div class="search-book-card card">
+                                        <div class="card-image">
+                                            <span class="books-price released-books-price">20 EUR</span>
+                                            <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " class="materialboxed">
+                                            <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                            <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
+                                        </div>
+                                        <div class="card-content search-book-text">
+                                            <p class="flow-text">I am a very simple card. I am good at containing small bits of information. </p>
+                                        </div>
+                                    </div>
+                                </div>         
+                            </div>                
                         </div>
-                        <p class="search-books-text">
-                            Blood,  a debut novel by Tony Birch, has been shortlisted for the 2012 Miles Franklin Award.
-                            In the blurb at Fishpond, it’s described as ‘an epic moral fable, a gothic ....         
-                         </p>
                     </div> 
-                </div>   
-            </div>         
+            </div>             
         </section>
 
         <!-- Body section -->
-        
+          
         
         <!-- Page footer -->
         <footer class="page-footer">
 
                 <div class="row footer-row">
 
-                    <div class="col s12">
+                    <div class="col s12 l4">
                         <h3 class="footer-address str-address">Address: Book Store, 11111, blueplanet 1</h3>
                     </div>
 
-                    <div class="footer-star">*</div>
+                    <div class="footer-star hide-on-large-only">*</div>
                     
-                    <div class="col s12">
+                    <div class="col s12 l4">
                         <h3 class="footer-address">Phone: +11 88 882 882 1</h3>
                     </div>
 
-                    <div class="footer-star">*</div>  
+                    <div class="footer-star hide-on-large-only">*</div>  
 
-                    <div class="col s12">
+                    <div class="col s12 l4">
                          <h3 class="footer-address">Email: thisplanet@planet.com</h3>  
                     </div>
 

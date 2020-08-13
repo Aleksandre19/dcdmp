@@ -11,47 +11,87 @@
 </head>
 <body>
  
-       <!-- Header section -->
+        <!-- Header section -->
        <header>
             <!-- Menu -->
-            <div class="row menu_row">
-                <div class="col s12 menu_col">
-                    <div class="navbar-fixed">
-                        <nav>
-                            <div class="nav-wrapper valign-wrapper">     
-                                <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
-                                
-                                <a href="{{ url_for('home') }}" class="brand-logo">
-                                    <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
-                                </a>
-                                                    
-                                <ul class="right hide-on-med-and-down">
-                                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                                </ul>
-                            </div>
-                        </nav>
+            <div class="menu-container">
+                <div class="row menu_row">
+                    <div class="col s12 menu_col">
+                        <div class="navbar-fixed">
+                            <nav class="main-nav">
+                                <div class="nav-wrapper valign-wrapper">     
+                                    <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                                    
+                                    <a href="{{ url_for('home') }}" class="brand-logo home-brand-logo hide-on-large-only">
+                                        <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                    </a>
+
+                                    <!--  Logo for Desktop devices -->
+                                    <a href="{{ url_for('home') }}" class="brand-logo home-brand-logo hide-on-med-and-down show-on-large">
+                                        <img src="{{ url_for('static', filename='img/lg/home/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                    </a>
+                                                        
+                                    <ul class="right hide-on-med-and-down">
+                                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                                        <li><a href="{{ url_for('add_book') }}" class="add_book_color">Add Book</a></li>
+                                        <li class="nav-active-link"><a href="{{ url_for('my_list') }}">My List</a></li>
+                                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <ul class="side-nav" id="mobile-demo">
+                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                            <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                            <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                            <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                        </ul>
                     </div>
-                    <ul class="side-nav" id="mobile-demo">
-                        <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                    </ul>
                 </div>
             </div>
         </header>
+        <!-- Authentication Welcoming section for Desktop devices -->
+        <section class="welcoming myList-welcoming hide-on-med-and-down">
+            <div class="container auth-wrapper">
+                <div class="div-for-hand-img"></div> 
+                <h1 class="auth-welcoming-title">The Special Offer For You</h1>
+            
+                <article class="row auth-container">   
+                    <div class="col l4">
+                        <a href="#">
+                            <figure class="special-offer">
+                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" alt="Special Offer " class="special-offer-img">
+                            </figure>
+                        </a> 
+                    </div>
+                               
+                    <div class="col l8">
+                            <h2 class="day_book_title">Loveless</h2>
+                            <h3 class="day_book_auth">Alice Oseman</h3>
+                            <p class="day_book_text flow-text"> 
+                                        A tender account of Georgia and her vexed quest for first love, Loveless
+                                        is a sprightly, affecting work from a writer at the top of her game.
+                                        The fourth novel from the phenomenally talented Alice Oseman - one 
+                                        of the most authentic and talked-about voices in contemporary writer at the top of her game.
+                                        The fourth novel from the phenomenally talented Alice Oseman - one 
+                                        of the most authentic and talked-about voices in contemporary YA
+                            </p>
+                        </div> 
+                </article>
+             </div>
+        </section>
 
         <!-- Add Book Welcoming section -->
         <section class="auth-section">
             <div class="row auth-row">
-                <div class="col s12 auth-text-wrapper">
+                <div class="col s12 auth-text-wrapper hide-on-large-only">
                     <h1 class="auth-text">
                         In Order To Access “My List” You Must Authenticate Yourself!
                     </h1>
                 </div>
+                <h1 class="auth-text hide-on-med-and-down">
+                        In Order To Access “My List” You Must Authenticate Yourself!
+                </h1>
                 <div class="auth-form-wrapper">
                     <form class="col s12 auth-form">
                         <div class="row">
@@ -82,19 +122,19 @@
 
                 <div class="row footer-row">
 
-                    <div class="col s12">
+                    <div class="col s12 l4">
                         <h3 class="footer-address str-address">Address: Book Store, 11111, blueplanet 1</h3>
                     </div>
 
-                    <div class="footer-star">*</div>
+                    <div class="footer-star hide-on-large-only">*</div>
                     
-                    <div class="col s12">
+                    <div class="col s12 l4">
                         <h3 class="footer-address">Phone: +11 88 882 882 1</h3>
                     </div>
 
-                    <div class="footer-star">*</div>  
+                    <div class="footer-star hide-on-large-only">*</div>  
 
-                    <div class="col s12">
+                    <div class="col s12 l4">
                          <h3 class="footer-address">Email: thisplanet@planet.com</h3>  
                     </div>
 

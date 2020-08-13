@@ -321,13 +321,18 @@ span.badge.new:after{
 /* My List Welcoming Section */
 
 .search_welcoming,
-.myList-welcoming{
+.myList-welcoming,
+.search-welcoming,
+.auth-welcoming{
+    overflow: hidden;
     padding-bottom: 40px;
     min-height: 50%;
     background-image: url('../img/sm/mylist/myList_welcoming_bg.jpg');
 }
 
-.myList-welcoming-title{
+.myList-welcoming-title,
+.auth-welcoming-title,
+.search-welcoming-title{
     color: white;
     text-transform: capitalize;
     font-size: 30px;
@@ -335,7 +340,10 @@ span.badge.new:after{
     padding: 40px 0px 0px 0px
 }
 
-.myList-container{
+.myList-container,
+.search-container,
+.auth-container{
+    position: relative;
     padding: 10px 5px 0px 0px;
     margin-top: 30px;
     background-color: rgba(132, 132, 132, .25);
@@ -345,7 +353,8 @@ figure{
     margin: 0;
 }
 
-.day_book_img{
+.day_book_img,
+.special-offer-img{
     width: 100%;
     margin: 15px;
 }
@@ -495,7 +504,8 @@ figure{
 
 .add-book-welcoming,
 .contact-welcoming,
-.single-welcoming{
+.single-welcoming,
+.auth-welcoming{
     width: 100%;
     height: 150px;
     position: relative;
@@ -508,7 +518,8 @@ figure{
 
 .add-book-search-form,
 .contact-search-form,
-.single-search-form{
+.single-search-form,
+.auth-search-form{
     position: absolute;
     top: 50%;
     left: 50% !important;
@@ -676,26 +687,29 @@ input[type=file].valid:not(.browser-default)+label{
     margin-top: 0;
 }
 
+div.search-col div.card{
+    background-color: transparent !important;
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    padding: 15px 15px 0px 15px;
+}
+
 .search-books-card{
-    margin: 15px;
+    margin: 15px; 
 }
 
 .search-result-container{
     background-color: rgba(132, 132, 132, .5);
     margin-bottom: 50px;
-}
-
-.search-card-image{
     margin-top: 30px;
 }
 
-.search-books-text{
-    color:white;
-    width: 80%;
-    margin:70px auto;
-    font-size: 18px;
-    line-height: 29px;
+.search-book-text{
+    color: white;
+    margin-top: 30px;
 }
+
 
 .search-row{
     margin-bottom: 0;
@@ -803,7 +817,8 @@ input[type=file].valid:not(.browser-default)+label{
 
     /* Home Page */
 
-    .home-welcoming{
+    .home-welcoming,
+    .contact-welcoming{
         min-height: 45%;
     }
 
@@ -975,15 +990,19 @@ input[type=file].valid:not(.browser-default)+label{
 
     /* My List Page */
 
-    .day_book_img{
+    .day_book_img,
+    .special-offer-img{
         width: auto;
     }
 
-    .day-book-figure{
+    .day-book-figure,
+    .special-offer{
         text-align: center;
     }
 
-    .myList-container{
+    .myList-container,
+    .search-container,
+    .auth-container{
         width: 65%;
     }
 
@@ -991,7 +1010,9 @@ input[type=file].valid:not(.browser-default)+label{
         height: 315px;
     }
 
-    .myList-welcoming-title{
+    .myList-welcoming-title,
+    .auth-welcoming-title,
+    .search-welcoming-title{
         padding-bottom: 25px;
     }
 
@@ -1007,6 +1028,70 @@ input[type=file].valid:not(.browser-default)+label{
         padding:0px 30px 0px 30px;
     }
 
+    .myList-full-img{
+        text-align: center;
+    }
+
+
+    /* Contact Page */
+
+    .contact-welcoming{  
+        background-image: url('../img/lg/contact/no-text-banner-bg.jpg') !important; 
+    }
+
+
+    /* Authentication Page */
+
+    .auth-section{
+        background-image: none;
+    }
+
+    .auth-welcoming{
+        padding-bottom: 0;
+    }
+
+    .auth-container{
+        width: 100%;
+    }
+
+    .auth-wrapper{
+        position: relative;
+    }
+
+    .auth-text{
+        width: auto;
+    }
+    
+    .auth-welcoming-title,
+    .search-welcoming-title{
+        text-align: left;
+        padding: 40px 0px 25px 45px;
+    }
+
+    .div-for-hand-img{
+        background-image: url("../img/lg/auth/hand-img-for-auth-page.png");
+        width: 32%;
+        height: 116%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: bottom;
+    }
+
+    .day_book_img,
+    .special-offer-img{
+        width: 50%;
+    }
+
+    .day_book_text{
+        height: 169px;
+    }
+
+    .search-welcoming{
+        background-image: url('../img/lg/search/search-banner-bg.jpg') !important; 
+    }
 
 
 }

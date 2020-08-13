@@ -14,40 +14,65 @@
        <!-- Header section -->
        <header>
             <!-- Menu -->
-            <div class="row menu_row">
-                <div class="col s12 menu_col">
-                    <div class="navbar-fixed">
-                        <nav>
-                            <div class="nav-wrapper valign-wrapper">     
-                                <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
-                                
-                                <a href="{{ url_for('home') }}" class="brand-logo">
-                                    <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
-                                </a>
-                                                    
-                                <ul class="right hide-on-med-and-down">
-                                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                                    <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                                    <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                                </ul>
-                            </div>
-                        </nav>
+            <div class="menu-container">
+                <div class="row menu_row">
+                    <div class="col s12 menu_col">
+                        <div class="navbar-fixed">
+                            <nav class="main-nav">
+                                <div class="nav-wrapper valign-wrapper">     
+                                    <a href="#" data-activates="mobile-demo" class="button-collapse "><i class="material-icons">menu</i></a>
+                                    
+                                    <a href="{{ url_for('home') }}" class="brand-logo home-brand-logo hide-on-large-only">
+                                        <img src="{{ url_for('static', filename='img/sm/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                    </a>
+
+                                    <!--  Logo for Desktop devices -->
+                                    <a href="{{ url_for('home') }}" class="brand-logo home-brand-logo hide-on-med-and-down show-on-large">
+                                        <img src="{{ url_for('static', filename='img/lg/home/logo.png') }}" alt="Book Stor's logo" id="logo"/>
+                                    </a>
+                                                        
+                                    <ul class="right hide-on-med-and-down">
+                                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                                        <li><a href="{{ url_for('add_book') }}" class="add_book_color">Add Book</a></li>
+                                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                                        <li class="nav-active-link"><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <ul class="side-nav" id="mobile-demo">
+                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                            <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+                            <li><a href="{{ url_for('my_list') }}">My List</a></li>
+                            <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                        </ul>
                     </div>
-                    <ul class="side-nav" id="mobile-demo">
-                        <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
-                    </ul>
                 </div>
             </div>
         </header>
 
-        <!-- Contatc Welcoming section -->
-        <section class="contact-welcoming">
+         <!-- Contact Welcoming section for Desktop devices-->
+        <section class="welcoming contact-welcoming hide-on-med-and-down">
+            <div class="welcoming-wrapper">
+                <div class="row ">
+                    <div class="col s12">
+                        <h1 class="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
+                    </div>
+                    <form class="col s12">
+                        <div class="input-field">
+                            <input id="search" type="search" class="home-search-input" required>
+                            <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
+                            <i class="material-icons colose-search-icon">close</i> 
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </section>
+
+         <!-- Contact Welcoming section for tablets and down devices  -->
+        <section class="single-welcoming hide-on-large-only">
             <div class="row ">
-                    <form class="col s12 contact-search-form">
+                    <form class="col s12 single-search-form">
                         <div class="input-field">
                             <input id="search" type="search" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
@@ -107,19 +132,19 @@
 
                 <div class="row footer-row">
 
-                    <div class="col s12">
+                    <div class="col s12 l4">
                         <h3 class="footer-address str-address">Address: Book Store, 11111, blueplanet 1</h3>
                     </div>
 
-                    <div class="footer-star">*</div>
+                    <div class="footer-star hide-on-large-only">*</div>
                     
-                    <div class="col s12">
+                    <div class="col s12 l4">
                         <h3 class="footer-address">Phone: +11 88 882 882 1</h3>
                     </div>
 
-                    <div class="footer-star">*</div>  
+                    <div class="footer-star hide-on-large-only">*</div>  
 
-                    <div class="col s12">
+                    <div class="col s12 l4">
                          <h3 class="footer-address">Email: thisplanet@planet.com</h3>  
                     </div>
 
@@ -130,6 +155,7 @@
 
                 </div>
         </footer>
+
 
 
 
