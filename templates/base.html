@@ -31,10 +31,10 @@
                                     </a>
                                                         
                                     <ul class="right hide-on-med-and-down">
-                                        <li class="nav-active-link"><a href="{{ url_for('home') }}">Home</a></li>
-                                        <li><a href="{{ url_for('add_book') }}" class="add_book_color">Add Book</a></li>
-                                        <li><a href="{{ url_for('my_list') }}">My List</a></li>
-                                        <li><a href="{{ url_for('contact') }}">Conatact</a></li>
+                                        <li {% if request.url_rule.endpoint == "home" %} class="nav-active-link" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
+                                        <li {% if request.url_rule.endpoint == "add_book" %} class="nav-active-link" {% endif %}><a href="{{ url_for('add_book') }}" class="add_book_color">Add Book</a></li>
+                                        <li {% if request.url_rule.endpoint == "my_list" %} class="nav-active-link" {% endif %}><a href="{{ url_for('my_list') }}">My List</a></li>
+                                        <li {% if request.url_rule.endpoint == "contact" %} class="nav-active-link" {% endif %}><a href="{{ url_for('contact') }}">Conatact</a></li>
                                     </ul>
                                 </div>
                             </nav>
