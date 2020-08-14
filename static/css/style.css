@@ -29,7 +29,8 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .menu_row,
-.auth-row{
+.auth-row,
+.l-search-result-row{
     margin-bottom: 0;
 }
 
@@ -267,13 +268,15 @@ span.badge.new:after{
     color: white;
 }
 
-.released-add-icon{
+.released-add-icon,
+.l-search-add-icon{
     right: -18px !important;
     top: -20px !important;
     background-color: #ff9752 !important;
 }
 
-.release-purchase-icon{
+.release-purchase-icon,
+.search-purchase-icon{
     position: absolute;
     bottom: 4px;
     background-color: #ff9752;
@@ -466,13 +469,15 @@ figure{
 }
 
 .myList-books-desc,
-.single-books-desc{
+.single-books-desc,
+.search-book-desc{
     color: #777777;
     margin-top: 20px;
 }
 
 .myList-books-desc span,
-.single-books-desc span{
+.single-books-desc span,
+.search-book-desc span{
     font-weight: bold;
 }
 
@@ -685,7 +690,18 @@ input[type=file].valid:not(.browser-default)+label{
 
 .search-book-container{
     margin-top: 0;
+    width: 90%;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
+
+
+.search-col{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 
 div.search-col div.card{
     background-color: transparent !important;
@@ -796,7 +812,8 @@ div.search-col div.card{
 }
 
 
-.single-books-desc{
+.single-books-desc
+.search-book-desc{
     margin: 30px 0px 30px 0px;
 }
 
@@ -814,6 +831,15 @@ div.search-col div.card{
 /************* Tablet Devices ***************/
 
 @media(min-width: 600px){
+
+    /* Menu Search Icons */
+    .input-field input[type=search]+label {
+        left: 44px;
+    }
+
+    .input-field input[type=search] ~ .material-icons {
+        right: 3rem;
+    }    
 
     /* Home Page */
 
@@ -1091,6 +1117,72 @@ div.search-col div.card{
 
     .search-welcoming{
         background-image: url('../img/lg/search/search-banner-bg.jpg') !important; 
+    }
+
+
+    /* The Search Page */
+    .search-purchase-icon{
+        position: relative;
+        top: -28px;
+    }
+
+    .l-search-img{
+        margin: 0 auto;
+        border: 3px solid #ff9752;
+    }
+
+
+    div.search-card-col div.card-image{
+        position: relative;
+    }
+    
+
+    .l-search-add-icon{
+        right: -21px !important;
+    }
+
+
+    .search-result-title{
+        background-color: white;
+        font-size: 24px;
+        color: #ff9752;
+        width: 270px;
+        text-align: center;
+        padding: 10px;
+        box-shadow: 0px -1px 5px 0px darkgrey;
+        -webkit-box-shadow: 0px -1px 5px 0px darkgrey;
+        -moz-box-shadow: 0px -1px 5px 0px darkgrey;
+        -o-box-shadow: 0px -1px 5px 0px darkgrey;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        margin: 60px 0px 50px 0px;
+    }
+
+    .l-search-result{
+        background-color: white;
+        padding: 35px;
+        box-shadow: 0px -1px 5px 0px darkgrey;
+        -webkit-box-shadow: 0px -1px 5px 0px darkgrey;
+        -moz-box-shadow: 0px -1px 5px 0px darkgrey;
+        -o-box-shadow: 0px -1px 5px 0px darkgrey;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -o-border-radius: 15px;
+        margin-bottom: 75px;
+    }
+
+    .l-search-result-text{
+        padding-left: 20px;
+        text-indent: 30px;
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    .search-book-desc{
+        margin-left: 30px;
     }
 
 
