@@ -1185,5 +1185,11 @@ div.search-col div.card{
         margin-left: 30px;
     }
 
+    /* Single Book Page */
+
+    .l-single-result-container{
+        margin-top: 60px;
+    }
+
 
 }
