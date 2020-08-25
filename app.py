@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId 
 import uuid
 
 app = Flask(__name__)
@@ -79,32 +80,50 @@ def generate_random_img_name():
     r_name = str(uuid.uuid4())
     return r_name
 
+f_name = ''
 
 # Uploading image
 def upload_image():
 
-    image = request.files['file']
-    # Checking image's settings
-    if image.filename == '':
-        flash('The image must have a name')
-        redirect(request.url)
-        return False
+    # image = request.files['file']
+    # # Checking image's settings
+    # if image.filename == '':
+    #     flash('The image must have a name')
+    #     redirect(request.url)
+    #     return False
 
-    if not allowed_filesieze(request.cookies.get('filesize')):
-        flash("The allowed maximum image size is 500 KB ")
-        redirect(request.url)
-        return False
+    # if not allowed_filesieze(request.cookies.get('filesize')):
+    #     flash("The allowed maximum image size is 500 KB ")
+    #     redirect(request.url)
+    #     return False
 
-    if not allowed_ext(image.filename):
-        flash("The allowed extensions are PNG, JPG, JPEG, GIF")  
-        redirect(request.url)
-        return False  
-    # Saving image to folder
-    img_folder_path = 'static/img/uploaded'
-    r_f_name = generate_random_img_name() + '.' + allowed_ext(image.filename)
-    image.save(os.path.join(img_folder_path, r_f_name))
+    # if not allowed_ext(image.filename):
+    #     flash("The allowed extensions are PNG, JPG, JPEG, GIF")  
+    #     redirect(request.url)
+    #     return False  
+    # # Saving image to folder
+    # img_folder_path = 'static/img/uploaded'
+    # r_f_name = generate_random_img_name() + '.' + allowed_ext(image.filename)
+    # image.save(os.path.join(img_folder_path, r_f_name))
+    # f_name = r_f_name
+    return True
 
-    
+
+
+# Adding user in database
+def adding_user(name, email, book_id):
+
+    if not mongo.db.users.find_one({"user_name" : name, "user_email" : email}):
+       mongo.db.users.insert_one({
+           "user_name" : name,
+           "user_email" : email,
+           "added_books" : [book_id]
+       })
+
+    else:
+       user = mongo.db.users.update_one({"user_name" : name, "user_email" : email}, {'$push': {"added_books" : book_id}})
+
+
 
 # Insertting image
 @app.route('/insert_book', methods=['POST'])
@@ -112,7 +131,11 @@ def insert_book():
 
     if request.method == "POST":
        
-        upload_image()
+        if upload_image():
+            
+            book_id = ObjectId()
+            
+            adding_user(request.form['user_name'], request.form['user_email'], book_id)
 
 
     return redirect(url_for('add_book'))
