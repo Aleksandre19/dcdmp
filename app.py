@@ -80,39 +80,41 @@ def generate_random_img_name():
     r_name = str(uuid.uuid4())
     return r_name
 
+
 f_name = ''
 
 # Uploading image
 def upload_image():
 
-    # image = request.files['file']
-    # # Checking image's settings
-    # if image.filename == '':
-    #     flash('The image must have a name')
-    #     redirect(request.url)
-    #     return False
+    image = request.files['file']
+    # Checking image's settings
+    if image.filename == '':
+        flash('The image must have a name')
+        redirect(request.url)
+        return False
 
-    # if not allowed_filesieze(request.cookies.get('filesize')):
-    #     flash("The allowed maximum image size is 500 KB ")
-    #     redirect(request.url)
-    #     return False
+    if not allowed_filesieze(request.cookies.get('filesize')):
+        flash("The allowed maximum image size is 500 KB ")
+        redirect(request.url)
+        return False
 
-    # if not allowed_ext(image.filename):
-    #     flash("The allowed extensions are PNG, JPG, JPEG, GIF")  
-    #     redirect(request.url)
-    #     return False  
-    # # Saving image to folder
-    # img_folder_path = 'static/img/uploaded'
-    # r_f_name = generate_random_img_name() + '.' + allowed_ext(image.filename)
-    # image.save(os.path.join(img_folder_path, r_f_name))
-    # f_name = r_f_name
+    if not allowed_ext(image.filename):
+        flash("The allowed extensions are PNG, JPG, JPEG, GIF")  
+        redirect(request.url)
+        return False  
+    # Saving image to folder
+    img_folder_path = 'static/img/uploaded'
+    r_f_name = generate_random_img_name() + '.' + allowed_ext(image.filename)
+    image.save(os.path.join(img_folder_path, r_f_name))
+    global f_name 
+    f_name = r_f_name
     return True
 
 
 
 # Adding user in database
 def adding_user(name, email, book_id):
-
+    # If user is new then adding in database
     if not mongo.db.users.find_one({"user_name" : name, "user_email" : email}):
        mongo.db.users.insert_one({
            "user_name" : name,
@@ -121,6 +123,7 @@ def adding_user(name, email, book_id):
        })
 
     else:
+       # If user already exists then updating added books list
        user = mongo.db.users.update_one({"user_name" : name, "user_email" : email}, {'$push': {"added_books" : book_id}})
 
 
@@ -135,8 +138,27 @@ def insert_book():
             
             book_id = ObjectId()
             
+            # Adding user in database
             adding_user(request.form['user_name'], request.form['user_email'], book_id)
 
+            # Adding books details in database
+            mongo.db.books.insert_one({
+                "_id" : book_id,
+                'title' : request.form['title'],
+                'author' : request.form['author'],
+                'released_date' : request.form['released_date'],
+                'language' : request.form['language'],
+                'price' : request.form['price'],
+                'description' : request.form['description'],
+                'affiliante_link' : request.form['affiliante_link'],
+                'image_name' : str(f_name),
+                'searched' : 0,
+                'my_list' : [],
+                'book_of_day' : False,
+                'special_offer' : False
+            })
+
+            flash("The book was add successfully ")    
 
     return redirect(url_for('add_book'))
 
