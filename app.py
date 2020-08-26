@@ -242,18 +242,27 @@ def insert_book():
 
 
 ############# Deleting books #############
+
 @app.route('/delete_book')
 def delete_book():
 
-    folder_path = 'static/img/uploaded'
-    book_id = request.args.get('book_id')
-    img_name = request.args.get('img_name')
+    # Avoiding a accessing straight from url
+    if request.args.get('book_id') and request.args.get('img_name'):
 
-    # Removing books from mongodb
-    mongo.db.books.remove({'_id' : ObjectId(book_id)})
-    
-    # Removing image from uploaded folder
-    os.remove(os.path.join(folder_path, img_name))
+        folder_path = 'static/img/uploaded'
+        book_id = request.args.get('book_id')
+        img_name = request.args.get('img_name')
+
+        # Removing books from mongodb
+        mongo.db.books.remove({'_id' : ObjectId(book_id)})
+
+        # Deleting added book's ID from users collection
+        mongo.db.users.update({'user_name' : session['user'], 'user_email' : session['email']}, {'$pull' : { 'added_books' : ObjectId(book_id) }})
+
+        # Removing image from uploaded folder
+        os.remove(os.path.join(folder_path, img_name))
+
+        return redirect(url_for('my_list'))
 
     return redirect(url_for('my_list'))
 
