@@ -40,60 +40,59 @@
                     <div class="divider myList-tabs-top-line"></div>
                     <a href="{{ url_for('log_out') }}" class="waves-effect waves-light btn log-out">Log Out</a>
                 </div>
-                
                 <div class="col s12">
-                     <ul class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header">
-                                <div class="row collapsible-header-row lg-myList-row">
-                                    <div class="col s2 l1">
-                                        <i class="material-icons">arrow_drop_down</i>
-                                    </div>
+                    {% for book in books %}
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header">
+                                    <div class="row collapsible-header-row lg-myList-row">
+                                        <div class="col s2 l1">
+                                            <i class="material-icons">arrow_drop_down</i>
+                                        </div>
 
-                                    <div class="col s6 l9">
-                                        <span class="myList-book-span myList-book-name">Remain</span> <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-auth hide-on-med-and-down"> Shota Orujashvili </span>  <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-price hide-on-med-and-down"> 20 EUR </span>
-                                    </div>
+                                        <div class="col s6 l9">
+                                            <span class="myList-book-span myList-book-name">{{ book.title }}</span> <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-auth hide-on-med-and-down">{{ book.author }} </span>  <span class="hide-on-med-and-down">|</span> <span class="myList-book-span myList-book-price hide-on-med-and-down"> {{ book.price }} EUR </span>
+                                        </div>
 
-                                    <div class="col s2 l1">
-                                        <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
-                                    </div>
+                                        <div class="col s2 l1">
+                                            <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light green"><i class="material-icons myList-edit-icon">edit</i></a>
+                                        </div>
 
-                                    <div class="col s2 l1">
-                                        <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
+                                        <div class="col s2 l1">
+                                            <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12 l4 myList-full-img">
+                                            <figure>   
+                                                <img src=" {{ url_for('static', filename='img/uploaded/' + book.image_name) }} " alt='{{ book.image_name }}' class="myList-img materialboxed" >       
+                                            </figure>
+                                        </div>
+
+                                        <div class="col s12 l8" >   
+
+                                            <ul class="myList-books-desc">
+                                                <li><span>Title</span> - {{ book.title }}</li>
+                                                <li><span>Author</span> - {{ book.author }}</li>
+                                                <li><span>Language</span> - {{ book.Language }}</li>
+                                                <li><span>Published</span> - {{ book.released_date }}</li>
+                                                <li><span>Price</span> - {{ book.price }}</li>
+                                            </ul>
+                                            <p class="myList-books-text">
+                                                {{ book.description }}
+                                            </p>
+
+                                        </div>   
                                     </div>
                                 </div>
-             
-                            </div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="col s12 l4 myList-full-img">
-                                        <figure>   
-                                            <img src=" {{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " alt='The Book Title' class="myList-img materialboxed" >       
-                                        </figure>
-                                    </div>
-
-                                    <div class="col s12 l8" >   
-
-                                        <ul class="myList-books-desc">
-                                            <li><span>Title</span> - Blood</li>
-                                            <li><span>Author</span> - Tony Brich</li>
-                                            <li><span>Language</span> - English</li>
-                                            <li><span>Published</span> - 01 Oct 2012</li>
-                                            <li><span>Price</span> - 20 EUR</li>
-                                        </ul>
-                                        <p class="myList-books-text">
-                                            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                                            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                                        </p>
-
-                                    </div>   
-                                </div>
-                            </div>
-                        </li>
-                        
-                     </ul>
-
-                      <ul class="collapsible" data-collapsible="accordion">
+                            </li>
+                            
+                        </ul>
+                    {% endfor %}
+                      <!-- <ul class="collapsible" data-collapsible="accordion">
                         <li>
                             <div class="collapsible-header">
                                 <div class="row collapsible-header-row lg-myList-row">
@@ -193,7 +192,7 @@
                             </div>
                         </li>
                         
-                     </ul>
+                     </ul> -->
                      
                        
                 </div>

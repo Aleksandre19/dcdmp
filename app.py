@@ -28,12 +28,18 @@ def check_session():
     else:
         return False    
 
+def retriev_books_by_user(name,  email):
+    book_id = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
+    users_books = mongo.db.books.find({'_id' : {'$in' : book_id['added_books']}})
+    return users_books
+
+
 
 # My List
 @app.route('/my_list')
 def my_list():
     if check_session():
-        return render_template('/my_list.html')
+        return render_template('/my_list.html', books=retriev_books_by_user(session['user'], session['email']))
 
     return render_template("auth.html")
     
@@ -80,20 +86,32 @@ def log_out():
     return render_template('auth.html')
 
 
+#Get books IDs
+def get_books_id(name, email):
+    user = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
+    for u in user:
+        book_id = int(u[added_books])
+        return book_id
+
 
 # Authentication page
 @app.route('/auth', methods=['POST'])
 def auth():
+
+    # Checking if button was submited
     if request.method == 'POST':
         if not request.form['user_name'] and not request.form['user_email']:
             flash("In order to make authentication you must fill all fields")
-            redirect(request.url)   
-         
+            redirect(request.url)  
+
+        # Making authentication 
         name = request.form['user_name'] 
         email = request.form['user_email']
-        add_user_in_mongodb(name, email)   
-            
-    return render_template('my_list.html')
+        add_user_in_mongodb(name, email)
+
+    # Rendering template and retrieving books by user      
+    return render_template('my_list.html' , books = retriev_books_by_user(name, email))
+
 
 
 @app.route('/single_book_page')
