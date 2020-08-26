@@ -34,29 +34,39 @@
         <!-- Add Book Welcoming section -->
         <section class="auth-section">
             <div class="row auth-row">
-                <div class="col s12 auth-text-wrapper hide-on-large-only">
-                    <h1 class="auth-text">
-                        In Order To Access “My List” You Must Authenticate Yourself!
-                    </h1>
-                </div>
-                <h1 class="auth-text hide-on-med-and-down">
-                        In Order To Access “My List” You Must Authenticate Yourself!
-                </h1>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <ul>
+                                <li> <h1 class="auth-text hide-on-med-and-down"> {{ message }} </h1> </li>
+                            </ul>  
+                        {% endfor %}      
+                    {% else %}
+                        <div class="col s12 auth-text-wrapper hide-on-large-only">
+                            <h1 class="auth-text">
+                                In Order To Access “My List” You Must Authenticate Yourself!
+                            </h1>
+                        </div>
+                        <h1 class="auth-text hide-on-med-and-down">
+                                In Order To Access “My List” You Must Authenticate Yourself!
+                        </h1>
+                    {% endif %}    
+                {% endwith %}
                 <div class="auth-form-wrapper">
-                    <form class="col s12 auth-form">
+                    <form action="{{ url_for('auth') }}" method="POST" class="col s12 auth-form">
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input type="text" name="user_name" id="user_name" class="validate">
+                                <input type="text" name="user_name" id="user_name" class="validate" required>
                                 <label for="user_name">Your Name</label>
                             </div>
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">email</i>
-                                <input type="email" name="email" id="email" class="validate">
+                                <input type="email" name="user_email" id="email" class="validate" required>
                                 <label for="email">Email</label>
                             </div>
                             <div class="col s12 add-book-button-margin">
-                                <input type="submit" name="add-book" id="add-book" class="waves-effect waves-light btn-large add-book-submit-btn" value="Add Book">
+                                <input type="submit" id="add-book" class="waves-effect waves-light btn-large add-book-submit-btn" value="Add Book">
                             </div>
                         </div>
                     </form>

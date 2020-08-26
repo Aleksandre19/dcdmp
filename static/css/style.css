@@ -352,6 +352,15 @@ span.badge.new:after{
     background-color: rgba(132, 132, 132, .25);
 }
 
+.log-out{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    margin-top: 30px;
+}
+
 figure{
     margin: 0;
 }

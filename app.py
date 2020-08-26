@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 import uuid
@@ -20,11 +20,23 @@ def home():
 def add_book():
     return render_template("add_book.html")
 
+################ My List ##################
+# Check if user is in session
+def check_session():
+    if "user" in session and "email" in session:
+        return True
+    else:
+        return False    
 
+
+# My List
 @app.route('/my_list')
 def my_list():
-    return render_template("my_list.html")
+    if check_session():
+        return render_template('/my_list.html')
 
+    return render_template("auth.html")
+    
 
 @app.route("/contact")
 def contact():
@@ -40,15 +52,54 @@ def added_books():
 def book_search():
     return  render_template("book_search.html")
 
+# If the user already exists in mongo db so it will be saved onlly in session
+# Otherwise it will be added as same as it will be saved in session also
+def add_user_in_mongodb(name, email):
+    if not mongo.db.users.find_one({'user_name' : name, 'user_email' : email}):
+        mongo.db.users.insert_one({
+            'user_name' : name ,
+            'user_email' : email,
+            'added_books' : []
+        })
 
-@app.route('/auth')
+        session['user'] = name
+        session['email'] = email
+
+
+    session['user'] = name
+    session['email'] = email   
+
+    return True
+
+
+
+# Log Out function
+@app.route('/log_out')
+def log_out():
+    session.clear()
+    return render_template('auth.html')
+
+
+
+# Authentication page
+@app.route('/auth', methods=['POST'])
 def auth():
-    return render_template("auth.html")
+    if request.method == 'POST':
+        if not request.form['user_name'] and not request.form['user_email']:
+            flash("In order to make authentication you must fill all fields")
+            redirect(request.url)   
+         
+        name = request.form['user_name'] 
+        email = request.form['user_email']
+        add_user_in_mongodb(name, email)   
+            
+    return render_template('my_list.html')
 
 
 @app.route('/single_book_page')
 def single_book_page():
     return render_template("single_book_page.html")    
+
 
 
 
