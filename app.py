@@ -20,7 +20,9 @@ def home():
 def add_book():
     return render_template("add_book.html")
 
+
 ################ My List ##################
+
 # Check if user is in session
 def check_session():
     if "user" in session and "email" in session:
@@ -28,6 +30,8 @@ def check_session():
     else:
         return False    
 
+
+# Retrieving books from mongodb by users
 def retriev_books_by_user(name,  email):
     book_id = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
     users_books = mongo.db.books.find({'_id' : {'$in' : book_id['added_books']}})
@@ -61,6 +65,7 @@ def book_search():
 # If the user already exists in mongo db so it will be saved onlly in session
 # Otherwise it will be added as same as it will be saved in session also
 def add_user_in_mongodb(name, email):
+    # Adding user in mongodb if he/she is new
     if not mongo.db.users.find_one({'user_name' : name, 'user_email' : email}):
         mongo.db.users.insert_one({
             'user_name' : name ,
@@ -71,13 +76,14 @@ def add_user_in_mongodb(name, email):
         session['user'] = name
         session['email'] = email
 
-
+    # storing user in session
     session['user'] = name
     session['email'] = email   
 
     return True
 
 
+################# Authentication ####################
 
 # Log Out function
 @app.route('/log_out')
@@ -111,6 +117,8 @@ def auth():
 
     # Rendering template and retrieving books by user      
     return render_template('my_list.html' , books = retriev_books_by_user(name, email))
+
+
 
 
 
@@ -230,6 +238,24 @@ def insert_book():
             flash("The book was add successfully ")    
 
     return redirect(url_for('add_book'))
+
+
+
+############# Deleting books #############
+@app.route('/delete_book')
+def delete_book():
+
+    folder_path = 'static/img/uploaded'
+    book_id = request.args.get('book_id')
+    img_name = request.args.get('img_name')
+
+    # Removing books from mongodb
+    mongo.db.books.remove({'_id' : ObjectId(book_id)})
+    
+    # Removing image from uploaded folder
+    os.remove(os.path.join(folder_path, img_name))
+
+    return redirect(url_for('my_list'))
 
 
 

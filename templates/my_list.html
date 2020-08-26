@@ -59,7 +59,7 @@
                                         </div>
 
                                         <div class="col s2 l1">
-                                            <a href="#" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
+                                            <a href="{{ url_for('delete_book' , book_id=book._id, img_name=book.image_name ) }}" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
                                         </div>
                                     </div>
                 
