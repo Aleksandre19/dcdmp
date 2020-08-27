@@ -18,7 +18,8 @@ def home():
 
 @app.route('/add_book')
 def add_book():
-    return render_template("add_book.html")
+    lang = mongo.db.languages.find_one()
+    return render_template("add_book.html", languages=lang['languages'])
 
 
 ################ My List ##################
@@ -270,16 +271,17 @@ def delete_book():
         # Removing image from uploaded folder
         os.remove(os.path.join(folder_path, img_name))
 
-        return redirect(url_for('my_list'))
+        return redirect(url_for('added_books'))
 
-    return redirect(url_for('my_list'))
+    return redirect(url_for('added_books'))
 
 
 
 ########### EDIT BOOK ##################
 @app.route('/edit_book/<book_id>')
 def edit_book(book_id):
-    return render_template('edit_book.html')
+    lang = mongo.db.languages.find_one()
+    return render_template('edit_book.html', languages=lang['languages'])
 
 
 if __name__ == '__main__':

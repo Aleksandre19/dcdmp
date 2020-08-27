@@ -80,8 +80,10 @@
                                     <i class="material-icons prefix">language</i>
                                     <select name="language" required>
                                         <option value="" disabled selected>Language</option>
-                                        <option value="Afrikaans">Afrikaans</option>
-                                        <option value="Albanian">Albanian</option>
+                                        {% for language in languages %}
+                                            <option value="{{ language }}">{{ language }}</option>
+                                        {% endfor %}
+                                        <!-- <option value="Albanian">Albanian</option>
                                         <option value="Arabic">Arabic</option>
                                         <option value="Armenian">Armenian</option>
                                         <option value="Basque">Basque</option>
@@ -151,54 +153,59 @@
                                         <option value="Uzbek">Uzbek</option>
                                         <option value="Vietnamese">Vietnamese</option>
                                         <option value="Welsh">Welsh</option>
-                                        <option value="Xhosa">Xhosa</option>
+                                        <option value="Xhosa">Xhosa</option> -->
                                     </select>
                                     <label>Choose the book's language</label>
                                 </div>
-                                 <div class="switch col s12 l6 edit_switcher_wrapper">  
+                                 <div class="switch col s12 m4 l2 edit_switcher_wrapper">  
                                     <div class="edit_switcher_container">
                                          <label>
-                                            The Book Of The Day: &nbsp; Off
+                                            <p>The Book Of The Day: </p>
+                                             Off
                                             <input type="checkbox">
                                             <span class="lever"></span>
                                             On
                                         </label>
                                     </div>
                                 </div>
-                               <div class="switch col s12 l6 edit_switcher_wrapper">
+                               <div class="switch col s12 m4 l2 edit_switcher_wrapper">
                                     <div class="edit_switcher_container">
                                          <label>
-                                            The Book For Special Offer: &nbsp; Off
+                                            <p>The Book For Special Offer: </p>
+                                             Off
                                             <input type="checkbox">
                                             <span class="lever"></span>
                                             On
                                         </label>
                                     </div>
                                 </div>
-                                <div class="switch col s12 l6 edit_switcher_wrapper">
+                                <div class="switch col s12 m4 l2 edit_switcher_wrapper">
                                    <div class="edit_switcher_container">
                                         <label>
-                                            The New Released Book: &nbsp; Off
+                                            <p>The New Released Book:</p> 
+                                            Off
                                             <input type="checkbox">
                                             <span class="lever"></span>
                                             On
                                         </label>
                                    </div>
                                 </div>
-                                <div class="switch col s12 l6 edit_switcher_wrapper">
+                                <div class="switch col s12 m6 l2 edit_switcher_wrapper">
                                     <div class="edit_switcher_container">
                                         <label>
-                                            The Best Selling Book: &nbsp; Off
+                                            <p> The Best Selling Book:</p> 
+                                            Off
                                             <input type="checkbox">
                                             <span class="lever"></span>
                                             On
                                         </label>
                                     </div>
                                 </div>
-                                <div class="switch col s12 edit_switcher_wrapper">
+                                <div class="switch col s12 m6 l2 edit_switcher_wrapper">
                                    <div class="edit_switcher_container">
                                         <label>
-                                            Show In Big Book Section: &nbsp; Off
+                                            <p>Show In Big Book Section: </p>
+                                             Off
                                             <input type="checkbox">
                                             <span class="lever"></span>
                                             On
