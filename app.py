@@ -53,15 +53,20 @@ def contact():
     return render_template("contact.html")
 
 
+############## ADDED BOOKS BY USER ############
 @app.route('/added_books')
 def added_books():
-    return render_template("added_books.html")
+    if check_session():
+        return render_template('/added_books.html', books=retriev_books_by_user(session['user'], session['email']))
+
+    return render_template("auth.html")
 
 
 @app.route('/book_search')
 def book_search():
     return  render_template("book_search.html")
 
+    
 # If the user already exists in mongo db so it will be saved onlly in session
 # Otherwise it will be added as same as it will be saved in session also
 def add_user_in_mongodb(name, email):
@@ -232,7 +237,10 @@ def insert_book():
                 'searched' : 0,
                 'my_list' : [],
                 'book_of_day' : False,
-                'special_offer' : False
+                'special_offer' : False,
+                'new_released' : False,
+                'best_selling' : False,
+                'show_big' : False
             })
 
             flash("The book was add successfully ")    
@@ -266,6 +274,12 @@ def delete_book():
 
     return redirect(url_for('my_list'))
 
+
+
+########### EDIT BOOK ##################
+@app.route('/edit_book/<book_id>')
+def edit_book(book_id):
+    return render_template('edit_book.html')
 
 
 if __name__ == '__main__':

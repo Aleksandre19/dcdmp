@@ -837,6 +837,17 @@ div.search-col div.card{
 }
 
 
+/************* Edit Page *******************/
+.edit_switcher_wrapper{
+    text-align: left;
+    margin: 5px 0px
+}
+
+.edit_switcher_container{
+    margin-left: 48px;
+}
+
+
 /************* Tablet Devices ***************/
 
 @media(min-width: 600px){
