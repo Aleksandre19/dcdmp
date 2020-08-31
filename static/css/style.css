@@ -215,6 +215,16 @@ span.badge.new:after{
     margin: -44.875% 0;
 }
 
+.new-small-books-img{
+    width: 278px ;
+    height: 420px;
+}
+
+
+.big-book{
+    width: 520px;
+}
+
 .purchase-icon{
     margin-bottom: -21px;
     margin-left: 50%;
@@ -228,6 +238,17 @@ span.badge.new:after{
 .books-purchase-icon{
     background-color: #18effc;
     color: #c14d00;
+}
+
+.desc_truncate{
+    color: #777777;
+    font-size: 16px;
+}
+
+
+.desc_truncate:hover{
+    color:#c14d00;
+    text-decoration: underline;
 }
 
 /* New Released Book Section */
@@ -254,6 +275,10 @@ span.badge.new:after{
 .best-book-title{
     text-align: right;
     margin-right: 2px;
+}
+
+.best_selling_img{
+    height: 393px; 
 }
 
 .released-books-card,
@@ -905,6 +930,10 @@ div.search-col div.card{
 
     .card-content p{
         font-size: 16px;
+    }
+
+    .best_selling_img{
+        height: 300px;
     }
 }
 

@@ -13,7 +13,12 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template(
+            "home.html",
+            new_released = mongo.db.books.find({'new_released' : True}).limit(4),
+            big_img = mongo.db.books.find_one({'show_big' : True}),
+            best_selling = mongo.db.books.find({'best_selling' : True}).limit(4)
+        )
 
 
 @app.route('/add_book')
@@ -91,7 +96,8 @@ def add_user_in_mongodb(name, email):
         mongo.db.users.insert_one({
             'user_name' : name ,
             'user_email' : email,
-            'added_books' : []
+            'added_books' : [],
+            'admin' : False
         })
 
         session['user'] = name
