@@ -36,11 +36,11 @@
             <div class="row auth-row">
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
-                        {% for message in messages %}
-                            <ul>
-                                <li> <h1 class="auth-text hide-on-med-and-down"> {{ message }} </h1> </li>
-                            </ul>  
-                        {% endfor %}      
+                        <ul>
+                            {% for message in messages %}
+                                <li> <h1 class="auth-text hide-on-med-and-down"> {{ message }} </h1> </li>     
+                            {% endfor %}
+                        </ul>       
                     {% else %}
                         <div class="col s12 auth-text-wrapper hide-on-large-only">
                             <h1 class="auth-text">

@@ -23,7 +23,18 @@
         
             <!-- New books section -->
             <section class="page-section new-book-section">
-                <div class="row">      
+                <div class="row">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li class="center-align">
+                                        <h3 class="flash-message"> {{ message }}</h3>
+                                     </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}      
                     <div class="col s12 books-title-wrapper hide-on-large-only">
                         <h2 class="section-title new-section-title">New released books <span class="new badge new-section-badge"></span></h2>
                     </div>
@@ -42,7 +53,7 @@
                                                     <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class='new-small-books-img books-img materialboxed'>
                                                     <span class="card-title books-card-title">{{ book.title }}</span>
                                                 </div>
-                                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                                <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
                                             </div>
                                             <div class="card-content">
                                                 <p class="flow-text">

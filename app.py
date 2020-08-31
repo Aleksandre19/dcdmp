@@ -68,6 +68,35 @@ def my_list():
 
 
 
+# Checking if the book is alredy in a user's list
+def book_already_is_in_list(name, email, book_id):
+    my_list = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
+    if ObjectId(book_id) in my_list['my_list']:
+        return True
+    else:
+        return False    
+
+
+
+# Inserting a book in a user's "My List"
+@app.route('/insert_in_my_list<book_id>')
+def insert_in_my_list(book_id):
+
+    if 'user' in session and 'email' in session:
+        name = session['user']
+        email = session['email']
+
+        if book_already_is_in_list(name, email, book_id):
+            flash("This book is already in your list")
+            return redirect(url_for('home'))
+
+        mongo.db.users.update_one({'user_name' : name, 'user_email' : email}, {'$push' : {'my_list' : ObjectId(book_id)}})
+        flash("The book was added seccessfully in your list")
+        return redirect(url_for('home'))
+
+    return render_template('auth.html')
+
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
@@ -97,6 +126,7 @@ def add_user_in_mongodb(name, email):
             'user_name' : name ,
             'user_email' : email,
             'added_books' : [],
+            'my_list' : [],
             'admin' : False
         })
 

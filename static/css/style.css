@@ -809,13 +809,19 @@ div.search-col div.card{
     background-position-x: center
 }
 
-.auth-text{
+.auth-text,
+.flash-message{
     font-size: 22px;
     color: #c14d00;
     line-height: 39px;
     text-align: center;
     margin: 79px auto;
     width: 280px;
+}
+
+.flash-message{
+    width: auto !important;
+    font-size: 45px;
 }
 
 .auth-form{
@@ -1043,6 +1049,10 @@ div.search-col div.card{
 
     .best-book-title{
         margin-top: -25px;
+    }
+
+    .best_selling_img{
+        height: 392px;
     }
 
     /* Footer */
