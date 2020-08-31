@@ -45,15 +45,24 @@ def is_admin(name, email):
         return False    
 
 
+# Getting current page name
+def get_page_name():
+    return request.url_rule.endpoint
+
 
 # Retrieving books from mongodb by users
-def retriev_books_by_user(name,  email):
-    if is_admin(name, email):
-        users_books = mongo.db.books.find({})
-    else:    
-        book_id = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
-        users_books = mongo.db.books.find({'_id' : {'$in' : book_id['added_books']}}) 
-             
+def retriev_books_by_user(name,  email, page):
+    
+    if page != 'my_list':     
+        if is_admin(name, email):
+            users_books = mongo.db.books.find({})
+        else:    
+            book_id = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
+            users_books = mongo.db.books.find({'_id' : {'$in' : book_id['added_books']}}) 
+    else:
+        mylist = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
+        users_books = mongo.db.books.find({'_id' : {'$in' : mylist['my_list'] }})
+         
     return users_books
 
 
@@ -62,7 +71,10 @@ def retriev_books_by_user(name,  email):
 @app.route('/my_list')
 def my_list():
     if check_session():
-        return render_template('/my_list.html', books=retriev_books_by_user(session['user'], session['email']))
+        name = session['user']
+        email = session['email']
+        page = get_page_name()
+        return render_template('/my_list.html', books=retriev_books_by_user(name, email, page))
 
     return render_template("auth.html")
 
@@ -82,7 +94,7 @@ def book_already_is_in_list(name, email, book_id):
 @app.route('/insert_in_my_list<book_id>')
 def insert_in_my_list(book_id):
 
-    if 'user' in session and 'email' in session:
+    if check_session():
         name = session['user']
         email = session['email']
 
@@ -97,6 +109,7 @@ def insert_in_my_list(book_id):
     return render_template('auth.html')
 
 
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
@@ -107,7 +120,8 @@ def contact():
 @app.route('/added_books')
 def added_books():
     if check_session():
-        return render_template('/added_books.html', books=retriev_books_by_user(session['user'], session['email']))
+        page = get_page_name()
+        return render_template('/added_books.html', books=retriev_books_by_user(session['user'], session['email'], page))
 
     return render_template("auth.html")
 
@@ -169,10 +183,11 @@ def auth():
         # Making authentication 
         name = request.form['user_name'] 
         email = request.form['user_email']
+        page = 'my_list'
         add_user_in_mongodb(name, email)
 
         # Rendering template and retrieving books by user      
-        return render_template('my_list.html' , books = retriev_books_by_user(name, email))
+        return render_template('my_list.html' , books = retriev_books_by_user(name, email, page))
 
     return render_template('auth.html')
 
@@ -336,7 +351,7 @@ def delete_book():
 @app.route('/edit_book')
 def edit_book():
 
-    if 'user' in session and  'email' in session:
+    if check_session():
         if request.args.get('book_id'):
             
             lang = mongo.db.languages.find_one()
@@ -360,7 +375,7 @@ def edit_book():
 @app.route('/update_book/<book_id>' , methods=['POST'])
 def update_book(book_id):
     n_img_name = ''
-    if 'user' in session and 'email' in session:
+    if check_session():
         if request.method == 'POST':
             # If the image was changed so uploading new image
             n_img_name = request.form.get('old_img')
