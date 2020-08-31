@@ -115,7 +115,16 @@
         document.getElementById("matfix").addEventListener("click", function(e) {
             e.stopPropagation();
         });
-        
+
+        /* The script for settinga date to a date input field in edit_book.htmk */
+        /* Where is bug and code doesn't wotk in edit_book.html */
+        /* This script functions only when there is edit_book.html loaded */
+        {% if request.url_rule.endpoint == 'edit_book' %}
+            let date = Date.parse('{{ book.released_date }}');
+            $('#released_date').pickadate('picker').set('select' , date, { format: 'dd/mm/yyyy' }).trigger('change');
+        {% endif %}
+
+
         /* Initialising the materialize select element */
         $('select').material_select();
 

@@ -32,10 +32,23 @@ def check_session():
         return False    
 
 
+# Chelking to see if user is admin
+def is_admin(name, email):
+    if mongo.db.users.find_one({'user_name' : name, 'user_email' : email, 'admin': True}):
+        return True
+    else:
+        return False    
+
+
+
 # Retrieving books from mongodb by users
 def retriev_books_by_user(name,  email):
-    book_id = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
-    users_books = mongo.db.books.find({'_id' : {'$in' : book_id['added_books']}})
+    if is_admin(name, email):
+        users_books = mongo.db.books.find({})
+    else:    
+        book_id = mongo.db.users.find_one({'user_name' : name, 'user_email' : email})
+        users_books = mongo.db.books.find({'_id' : {'$in' : book_id['added_books']}}) 
+             
     return users_books
 
 
@@ -47,11 +60,13 @@ def my_list():
         return render_template('/my_list.html', books=retriev_books_by_user(session['user'], session['email']))
 
     return render_template("auth.html")
-    
+
+
 
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
 
 
 ############## ADDED BOOKS BY USER ############
@@ -90,7 +105,6 @@ def add_user_in_mongodb(name, email):
 
 
 ################# Authentication ####################
-
 # Log Out function
 @app.route('/log_out')
 def log_out():
@@ -121,10 +135,10 @@ def auth():
         email = request.form['user_email']
         add_user_in_mongodb(name, email)
 
-    # Rendering template and retrieving books by user      
-    return render_template('my_list.html' , books = retriev_books_by_user(name, email))
+        # Rendering template and retrieving books by user      
+        return render_template('my_list.html' , books = retriev_books_by_user(name, email))
 
-
+    return render_template('auth.html')
 
 
 
@@ -135,7 +149,7 @@ def single_book_page():
 
 
 
-################ INSERTING IMAGE BOOK ###############
+################ INSERTING IMAGE  ###############
 
 # Checking if file has a extension which is in allowed extensions list
 def allowed_filesieze(filesize):
@@ -184,9 +198,14 @@ def upload_image():
     if not allowed_ext(image.filename):
         flash("The allowed extensions are PNG, JPG, JPEG, GIF")  
         redirect(request.url)
-        return False  
+        return False 
     # Saving image to folder
     img_folder_path = 'static/img/uploaded'
+    
+    # Removing image when updating page and uploading new image
+    if request.url_rule.endpoint == 'update_book':
+        os.remove(os.path.join(img_folder_path, request.form.get('old_img')))
+
     r_f_name = generate_random_img_name() + '.' + allowed_ext(image.filename)
     image.save(os.path.join(img_folder_path, r_f_name))
     global f_name 
@@ -278,10 +297,67 @@ def delete_book():
 
 
 ########### EDIT BOOK ##################
-@app.route('/edit_book/<book_id>')
-def edit_book(book_id):
-    lang = mongo.db.languages.find_one()
-    return render_template('edit_book.html', languages=lang['languages'])
+@app.route('/edit_book')
+def edit_book():
+
+    if 'user' in session and  'email' in session:
+        if request.args.get('book_id'):
+            
+            lang = mongo.db.languages.find_one()
+            book_id = request.args.get('book_id')
+            the_book = mongo.db.books.find_one({'_id' : ObjectId(book_id)})
+
+            return render_template(
+                        'edit_book.html', 
+                        languages=lang['languages'], 
+                        book=the_book,
+                        admin=is_admin(session['user'],  session['email'])
+                    ) 
+
+        return redirect(url_for('added_books'))
+
+    return render_template('auth.html')
+
+
+
+
+@app.route('/update_book/<book_id>' , methods=['POST'])
+def update_book(book_id):
+    n_img_name = ''
+    if 'user' in session and 'email' in session:
+        if request.method == 'POST':
+            # If the image was changed so uploading new image
+            n_img_name = request.form.get('old_img')
+            new_img = request.files['file']
+            if new_img.filename != '':
+                upload_image()
+                n_img_name = f_name    
+            
+            # Checkiing to fiind if user is admin
+            admin = is_admin(session['user'], session['email'])
+            #Updating data in mongodb
+            mongo.db.books.update({'_id' : ObjectId(book_id)},
+                {
+                    'title' : request.form.get('title'),
+                    'author' : request.form.get('author'),
+                    'released_date' : request.form.get('released_date'),
+                    'language' : request.form.get('language'),
+                    'price' : request.form.get('price'),
+                    'description' : request.form.get('description'),
+                    'affiliante_link' : request.form.get('affiliante_link'),
+                    'image_name' : n_img_name,
+                    'searched' : int(request.form.get('old_searched')),
+                    'book_of_day' :  bool(request.form.get('book_of_day')) if admin else bool(request.form.get('old_book_of_day')),
+                    'special_offer' : bool(request.form.get('special_offer')) if admin else bool(request.form.get('old_special_offer')),
+                    'new_released' : bool(request.form.get('new_released')) if admin else bool(request.form.get('old_new_released')),
+                    'best_selling' : bool(request.form.get('best_selling')) if admin else bool(request.form.get('old_best_selling')),
+                    'show_big' : bool(request.form.get('show_big')) if admin else bool(request.form.get('old_show_big'))
+                })
+            flash("The Book Was Successfully Updated") 
+            return redirect(url_for('edit_book', book_id=book_id))
+
+    return render_template('auth.html')    
+
 
 
 if __name__ == '__main__':
