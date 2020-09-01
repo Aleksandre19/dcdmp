@@ -10,7 +10,7 @@
                     </div>
                     <form class="col s12">
                         <div class="input-field">
-                            <input id="search" type="search" class="home-search-input" required>
+                            <input id="autocomplete-input" type="search" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
@@ -203,4 +203,17 @@
                 </div>    
             </section>
 
+{% endblock %}
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $('input.home-search-input').autocomplete({
+            data: {
+               {% for autocomplete in autocomplete_data %}
+                  '{{ autocomplete.title }}': null,
+               {% endfor %}   
+            },
+            });
+        });
+    </script>
 {% endblock %}

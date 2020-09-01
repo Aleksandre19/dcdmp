@@ -11,13 +11,19 @@ app.config['MONGO_URI'] = 'mongodb+srv://dcdmpDBUser:PassWord@dcdmp.cs4wp.mongod
 app.secret_key = 'some secret kay'
 mongo = PyMongo(app)
 
+
+def data_for_search_autocomplete():
+    return mongo.db.books.find({})
+
+
 @app.route('/')
 def home():
     return render_template(
             "home.html",
             new_released = mongo.db.books.find({'new_released' : True}).limit(4),
             big_img = mongo.db.books.find_one({'show_big' : True}),
-            best_selling = mongo.db.books.find({'best_selling' : True}).limit(4)
+            best_selling = mongo.db.books.find({'best_selling' : True}).limit(4),
+            autocomplete_data = data_for_search_autocomplete()
         )
 
 
