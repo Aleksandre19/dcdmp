@@ -28,7 +28,6 @@ def add_book():
 
 
 ################ My List ##################
-
 # Check if user is in session
 def check_session():
     if "user" in session and "email" in session:
@@ -51,6 +50,12 @@ def get_page_name():
 
 
 # Retrieving books from mongodb by users
+# This function check from which page the request was made
+# and acts accordingly
+# If request comes from my_list page than all books getting from db by user
+# If request comes other than my_list page then the function check if user is admin
+# if so it retrievs all books for admin in added_books page.
+# In this case admin is abale to set additional setting to books
 def retriev_books_by_user(name,  email, page):
     
     if page != 'my_list':     
@@ -103,7 +108,7 @@ def insert_in_my_list(book_id):
             return redirect(url_for('home'))
 
         mongo.db.users.update_one({'user_name' : name, 'user_email' : email}, {'$push' : {'my_list' : ObjectId(book_id)}})
-        flash("The book was added seccessfully in your list")
+        flash("The book has been added seccessfully in your list")
         return redirect(url_for('home'))
 
     return render_template('auth.html')
@@ -314,7 +319,7 @@ def insert_book():
                 'show_big' : False
             })
 
-            flash("The book was add successfully ")    
+            flash("The Book Has Been Added Successfully ")    
 
     return redirect(url_for('add_book'))
 
@@ -331,17 +336,25 @@ def delete_book():
         folder_path = 'static/img/uploaded'
         book_id = request.args.get('book_id')
         img_name = request.args.get('img_name')
+        page = request.args.get('page')
 
-        # Removing books from mongodb
-        mongo.db.books.remove({'_id' : ObjectId(book_id)})
+        if page == 'my_list':
+            field_name = page
+            f_msg = 'The Book Has Been Successfully Removed From Your List'
+        else:
+            field_name = 'added_books'
+            # Removing books from mongodb
+            mongo.db.books.remove({'_id' : ObjectId(book_id)})
+            # Removing image from uploaded folder
+            os.remove(os.path.join(folder_path, img_name)) 
+            f_msg = 'The Book Has Been Deleted'   
 
         # Deleting added book's ID from users collection
-        mongo.db.users.update({'user_name' : session['user'], 'user_email' : session['email']}, {'$pull' : { 'added_books' : ObjectId(book_id) }})
+        mongo.db.users.update({'user_name' : session['user'], 'user_email' : session['email']}, {'$pull' : { str(field_name) : ObjectId(book_id) }})
 
-        # Removing image from uploaded folder
-        os.remove(os.path.join(folder_path, img_name))
+        flash(f_msg)
 
-        return redirect(url_for('added_books'))
+        return redirect(url_for(field_name))
 
     return redirect(url_for('added_books'))
 
@@ -404,7 +417,7 @@ def update_book(book_id):
                     'best_selling' : bool(request.form.get('best_selling')) if admin else bool(request.form.get('old_best_selling')),
                     'show_big' : bool(request.form.get('show_big')) if admin else bool(request.form.get('old_show_big'))
                 })
-            flash("The Book Was Successfully Updated") 
+            flash("The Book Has Been Successfully Updated") 
             return redirect(url_for('edit_book', book_id=book_id))
 
     return render_template('auth.html')    

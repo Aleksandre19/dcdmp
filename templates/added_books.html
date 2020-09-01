@@ -42,6 +42,17 @@
                     <a href="{{ url_for('log_out') }}" class="waves-effect waves-light btn log-out">Log Out</a>
                 </div>
                 <div class="col s12">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li class="center-align">
+                                        <h3 class="flash-message"> {{ message }}</h3>
+                                     </li>
+                                {% endfor %}    
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
                      {% for book in books %}
                         <ul class="collapsible" data-collapsible="accordion">
                             <li>
@@ -60,7 +71,7 @@
                                         </div>
 
                                         <div class="col s2 l1">
-                                            <a href="{{ url_for('delete_book', book_id=book._id, img_name=book.image_name ) }}" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
+                                            <a href="{{ url_for('delete_book', book_id=book._id, img_name=book.image_name, page='' ) }}" class="myList-icon-btns btn-floating btn-small waves-effect waves-light red add-book-del-btn"><i class="material-icons myList-edit-icon">highlight_off</i></a>
                                         </div>
                                     </div>
                 

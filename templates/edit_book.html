@@ -43,7 +43,9 @@
                         {% if messages %}
                             <ul>
                                 {% for message in messages %}
-                                    <li class="center-align"> {{ message }} </li>
+                                    <li class="center-align">
+                                        <h3 class="flash-message"> {{ message }}</h3>
+                                     </li>
                                 {% endfor %}    
                             </ul>
                         {% endif %}
