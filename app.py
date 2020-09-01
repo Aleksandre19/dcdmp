@@ -108,14 +108,15 @@ def insert_in_my_list(book_id):
     if check_session():
         name = session['user']
         email = session['email']
+        page = str(request.args.get('page'))
 
         if book_already_is_in_list(name, email, book_id):
             flash("This book is already in your list")
-            return redirect(url_for('home'))
+            return redirect(url_for(page))
 
         mongo.db.users.update_one({'user_name' : name, 'user_email' : email}, {'$push' : {'my_list' : ObjectId(book_id)}})
         flash("The book has been added seccessfully in your list")
-        return redirect(url_for('home'))
+        return redirect(url_for(page))
 
     return render_template('auth.html')
 
@@ -137,9 +138,13 @@ def added_books():
     return render_template("auth.html")
 
 
-@app.route('/book_search')
+# Searched book 
+@app.route('/book_search', methods=['POST'])
 def book_search():
-    return  render_template("book_search.html")
+    if request.method == "POST":
+        book_name = request.form.get('book_name')
+        books = mongo.db.books.find({'title' : book_name})
+    return  render_template("book_search.html", results=books)
 
     
 # If the user already exists in mongo db so it will be saved onlly in session

@@ -8,9 +8,9 @@
                     <div class="col s12">
                         <h1 class="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
                     </div>
-                    <form class="col s12">
+                    <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12">
                         <div class="input-field">
-                            <input id="autocomplete-input" type="search" class="home-search-input" required>
+                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
@@ -53,7 +53,7 @@
                                                     <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class='new-small-books-img books-img materialboxed'>
                                                     <span class="card-title books-card-title">{{ book.title }}</span>
                                                 </div>
-                                                <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
+                                                <a href=" {{ url_for('insert_in_my_list',  book_id=book._id, page='home') }}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
                                             </div>
                                             <div class="card-content">
                                                 <p class="flow-text">
@@ -205,14 +205,20 @@
 
 {% endblock %}
 {% block script %}
+    <!-- Script for autocomplete of search input lement -->
     <script>
         $(document).ready(function(){
             $('input.home-search-input').autocomplete({
             data: {
-               {% for autocomplete in autocomplete_data %}
-                  '{{ autocomplete.title }}': null,
-               {% endfor %}   
+                {% for autocomplete in autocomplete_data %}
+                    /* Name of books form mongodb */
+                    '{{ autocomplete.title }}': 'static/img/uploaded/{{ autocomplete.image_name }}' ,
+                {% endfor %}   
             },
+            /* As soon as item is selected from the list the form is submited automatically */
+            onAutocomplete : function(){
+                document.getElementById("s_form").submit();
+            }
             });
         });
     </script>
