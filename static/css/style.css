@@ -280,6 +280,21 @@ span.badge.new:after{
     border-radius: 15px;
 }
 
+.best_view{
+    position: absolute;
+    top: 50%;
+    background-color: #ff9752;
+    color: white;
+    padding: 2px 15px;
+    border-radius: 0px 10px 10px 0px;
+}
+
+
+.best_view:hover{
+    background-color: #c14d00;
+    text-decoration: underline;
+}
+
 .released-section-title,
 .best-book-title{
     text-align: right;
@@ -427,6 +442,14 @@ figure{
     height: 170px;
     overflow: hidden;
     color: white;
+}
+
+.view_link{
+    color: white;
+}
+
+.view_link:hover{
+  text-decoration: underline;
 }
 
 /* Tabs */

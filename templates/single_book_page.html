@@ -1,34 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
         <!-- Single Book Welcoming section for tablets and down devices -->
-        <section class="single-welcoming hide-on-large-only">
-            <div class="row ">
-                    <form class="col s12 single-search-form">
-                        <div class="input-field">
-                            <input id="search" type="search" required>
-                            <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
-                            <i class="material-icons colose-search-icon">close</i> 
-                        </div>  
-                    </form>
-                </div>         
-        </section>
 
-        <!-- Single book Welcoming section for Desktop devices -->
+         <!-- Single book Welcoming section for Desktop devices -->
         <section class="welcoming home-welcoming hide-on-med-and-down">
             <div class="welcoming-wrapper">
                 <div class="row ">
                     <div class="col s12">
                         <h1 class="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
                     </div>
-                    <form class="col s12">
+                   <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
-                            <input id="search" type="search" class="home-search-input" required>
+                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
                     </form>
                 </div>
             </div>
+        </section>
+
+        <section class="single-welcoming hide-on-large-only">
+            <div class="row ">
+                    <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
+                        <div class="input-field">
+                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
+                            <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
+                            <i class="material-icons colose-search-icon">close</i> 
+                        </div>  
+                    </form>
+                </div>         
         </section>
 
         <!-- Body section -->
@@ -42,10 +43,10 @@
                                 <figure>   
                                     <div class="card single-card">
                                         <div class="card-image">
-                                            <span class="books-price released-books-price">20 EUR</span>
-                                            <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }} " class="materialboxed">
-                                            <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                            <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
+                                            <span class="books-price released-books-price">{{ book.title }} EUR</span>
+                                            <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class="materialboxed">
+                                            <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" target="_blank" class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                            <a href='{{ book.affiliante_link}}' target="_blank" class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
                                         </div>
                                     </div> 
                                 </figure>
@@ -53,22 +54,16 @@
                                 <div class="divider single-top-divider"></div>
 
                                 <ul class="single-books-desc">
-                                    <li><span>Title</span> - Blood</li>
-                                    <li><span>Author</span> - Tony Brich</li>
-                                    <li><span>Language</span> - English</li>
-                                    <li><span>Published</span> - 01 Oct 2012</li>
-                                    <li><span>Price</span> - 20 EUR</li>
+                                    <li><span>Title</span> - {{ book.title }}</li>
+                                    <li><span>Author</span> - {{ book.author }}</li>
+                                    <li><span>Language</span> - {{ book.language }}</li>
+                                    <li><span>Published</span> - {{ book.description }}</li>
                                 </ul>
 
                                 <div class="divider"></div>
                                 
                                 <p class="single-books-text">
-                                   Blood,  a debut novel by Tony Birch, has been shortlisted for the 2012 Miles Franklin Award.
-                                   In the blurb at Fishpond, it’s described as ‘an epic moral fable, a gothic odyssey set on the
-                                   back roads of Australia’.  It’s the story of two kids, thirteen-year-old Jesse and his
-                                   little sister Rachel, aged eight.  They have the kind of mother they’d be better off without. 
-                                   Her name is Gwen. That’s not me, sitting in judgement.  It’s Jesse, who narrates this story, who tells us so.
-                                   Gwen’s life is a disaster, and her adolescent son has finall
+                                  {{ book.released_date }}
                                 </p>
                         </div>
                     </div>
@@ -84,27 +79,21 @@
                             <div class="row l-search-result-row">
                                 <div class="col l3 search-card-col">
                                     <div class="card-image l-search-card-wrapper">
-                                        <span class="books-price released-books-price">20 EUR</span>
-                                         <a class="l-search-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                        <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " class="materialboxed l-search-img">
-                                        <a class="waves-effect waves-light btn purchase-icon search-purchase-icon">Purchase</a>
+                                        <span class="books-price released-books-price">{{ book.title }} EUR</span>
+                                        <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" target="_blank" class="l-search-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                        <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class="materialboxed l-search-img">
+                                        <a href='{{ book.affiliante_link}}' target="_blank" class="waves-effect waves-light btn purchase-icon search-purchase-icon">Purchase</a>
                                     </div>
                                 </div>
                                 <div class="col l9">
                                     <ul class="search-book-desc">
-                                        <li><span>Title</span> - Blood</li>
-                                        <li><span>Author</span> - Tony Brich</li>
-                                        <li><span>Language</span> - English</li>
-                                        <li><span>Published</span> - 01 Oct 2012</li>
-                                        <li><span>Price</span> - 20 EUR</li>
+                                        <li><span>Title</span> - {{ book.title }}</li>
+                                        <li><span>Author</span> - {{ book.author }}</li>
+                                        <li><span>Language</span> - {{ book.language }}</li>
+                                        <li><span>Published</span> - {{ book.description }}</li>
                                     </ul>
                                     <p class="l-search-result-text flow-text">
-                                        Blood,  a debut novel by Tony Birch, has been shortlisted for the 2012 Miles Franklin Award.
-                                        In the blurb at Fishpond, it’s described as ‘an epic moral fable, a gothic odyssey set on the
-                                        back roads of Australia’.  It’s the story of two kids, thirteen-year-old Jesse and his little sister Rachel,
-                                        aged eight.  They have the kind of mother they’d be better off without.  Her name is Gwen.
-                                        That’s not me, sitting in judgement.  It’s Jesse, who narrates this story, who tells us so. 
-                                       Gwen’s life is a disaster, and her adolescent son has finally given up on her.
+                                        {{ book.released_date }}
                                     </p>
                                 </div>
                             </div>
@@ -113,4 +102,23 @@
                 </div>
             </div>
         </section>     
+{% endblock %}
+{% block script %}
+    <!-- Script for autocomplete of search input lement -->
+    <script>
+        $(document).ready(function(){
+            $('input.home-search-input').autocomplete({
+            data: {
+                {% for autocomplete in autocomplete_data %}
+                    /* Name of books form mongodb */
+                    '{{ autocomplete.title }}': 'static/img/uploaded/{{ autocomplete.image_name }}' ,
+                {% endfor %}   
+            },
+            /* As soon as item is selected from the list the form is submited automatically */
+            onAutocomplete : function(){
+                document.getElementById("s_form").submit();
+            }
+            });
+        });
+    </script>
 {% endblock %}

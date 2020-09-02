@@ -5,25 +5,23 @@
         <section class="welcoming myList-welcoming">
            <h1 class="myList-welcoming-title">The Book Of The Day</h1>
            <article class="container myList-container">
-                <a href="#">
+                
                     <div class="row">
                         <div class="col s4">
                             <figure class="day-book-figure">
-                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" alt="The book of the day" class="day_book_img">
+                                <img src="{{ url_for('static', filename='img/uploaded/' + book_of_day.image_name)}}" alt="The book of the day" class="day_book_img">
                             </figure>
                         </div>
                         <div class="col s8 ">
-                            <h2 class="day_book_title">Loveless</h2>
-                            <h3 class="day_book_auth">Alice Oseman</h3>
-                            <p class="day_book_text flow-text"> A tender account of Georgia and her vexed quest for first love, Loveless
-                            is a sprightly, affecting work from a writer at the top of her game.
-                            The fourth novel from the phenomenally talented Alice Oseman - one 
-                            of the most authentic and talked-about voices in contemporary writer at the top of her game.
-                            The fourth novel from the phenomenally talented Alice Oseman - one 
-                            of the most authentic and talked-about voices in contemporary YA</p>
+                            <h2 class="day_book_title">{{ book_of_day.title }}</h2>
+                            <h3 class="day_book_auth">{{ book_of_day.author }}</h3>
+                            <p class="day_book_text flow-text">
+                                 <a href="{{ url_for('single_book_page' , book_id=book_of_day._id) }}" class="view_link">
+                                    {{ book_of_day.description | truncate(180) }}
+                                </a>    
+                            </p>
                         </div>
                     </div>
-                </a>
            </article>
         </section>
 
@@ -36,7 +34,7 @@
                    <ul class="myList-tabs-ul">    
                        <li class="myList-tabs first-tab-li"><a href=" {{ url_for('my_list') }} ">My List</a></li>
                        <li class="myList-tabs"><a href="{{ url_for('added_books') }}" class="active-tab">Added</a></li>
-                       <li class="myList-tabs"><a href="#">Add Book</a></li>
+                       <li class="myList-tabs"><a href="{{ url_for('add_book') }}">Add Book</a></li>
                     </ul>
                     <div class="divider myList-tabs-top-line"></div>
                     <a href="{{ url_for('log_out') }}" class="waves-effect waves-light btn log-out">Log Out</a>

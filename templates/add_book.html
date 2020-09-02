@@ -7,9 +7,9 @@
                     <div class="col s12">
                         <h1 class="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
                     </div>
-                    <form class="col s12">
+                    <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
-                            <input id="search" type="search" class="home-search-input" required>
+                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
@@ -21,9 +21,9 @@
          <!-- Add Book Welcoming section for tablets and down devices  -->
         <section class="single-welcoming hide-on-large-only">
             <div class="row ">
-                    <form class="col s12 single-search-form">
+                    <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
-                            <input id="search" type="search" required>
+                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
@@ -127,8 +127,24 @@
 {% endblock %}
 {% block script %}
     <script>
+    
         function filesize(el){
             document.cookie = `filesize = ${el.files[0].size}`;
         }
+
+        $(document).ready(function(){
+            $('input.home-search-input').autocomplete({
+            data: {
+                {% for autocomplete in autocomplete_data %}
+                    /* Name of books form mongodb */
+                    '{{ autocomplete.title }}': 'static/img/uploaded/{{ autocomplete.image_name }}' ,
+                {% endfor %}   
+            },
+            /* As soon as item is selected from the list the form is submited automatically */
+            onAutocomplete : function(){
+                document.getElementById("s_form").submit();
+            }
+            });
+        });
     </script>
 {% endblock %}

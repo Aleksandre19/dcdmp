@@ -12,6 +12,7 @@ app.secret_key = 'some secret kay'
 mongo = PyMongo(app)
 
 
+
 def data_for_search_autocomplete():
     return mongo.db.books.find({})
 
@@ -30,7 +31,7 @@ def home():
 @app.route('/add_book')
 def add_book():
     lang = mongo.db.languages.find_one()
-    return render_template("add_book.html", languages=lang['languages'])
+    return render_template("add_book.html", languages=lang['languages'], autocomplete_data = data_for_search_autocomplete())
 
 
 ################ My List ##################
@@ -85,7 +86,7 @@ def my_list():
         name = session['user']
         email = session['email']
         page = get_page_name()
-        return render_template('/my_list.html', books=retriev_books_by_user(name, email, page))
+        return render_template('/my_list.html', books=retriev_books_by_user(name, email, page), book_of_day=mongo.db.books.find_one({'book_of_day' : True}))
 
     return render_template("auth.html")
 
@@ -124,7 +125,7 @@ def insert_in_my_list(book_id):
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html", autocomplete_data = data_for_search_autocomplete())
 
 
 
@@ -133,7 +134,7 @@ def contact():
 def added_books():
     if check_session():
         page = get_page_name()
-        return render_template('/added_books.html', books=retriev_books_by_user(session['user'], session['email'], page))
+        return render_template('/added_books.html', books=retriev_books_by_user(session['user'], session['email'], page), book_of_day=mongo.db.books.find_one({'book_of_day' : True}))
 
     return render_template("auth.html")
 
@@ -144,7 +145,8 @@ def book_search():
     if request.method == "POST":
         book_name = request.form.get('book_name')
         books = mongo.db.books.find({'title' : book_name})
-    return  render_template("book_search.html", results=books)
+
+    return  render_template("book_search.html", results=books, most_searched=mongo.db.books.find_one({''}))
 
     
 # If the user already exists in mongo db so it will be saved onlly in session
@@ -209,9 +211,10 @@ def auth():
 
 
 
-@app.route('/single_book_page')
-def single_book_page():
-    return render_template("single_book_page.html")    
+@app.route('/single_book_page/<book_id>')
+def single_book_page(book_id):
+    result = mongo.db.books.find_one({'_id' : ObjectId(book_id)})
+    return render_template("single_book_page.html", book=result, autocomplete_data = data_for_search_autocomplete() )    
 
 
 

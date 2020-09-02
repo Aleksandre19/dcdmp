@@ -8,7 +8,7 @@
                     <div class="col s12">
                         <h1 class="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
                     </div>
-                    <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12">
+                    <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
                             <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
@@ -57,7 +57,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <p class="flow-text">
-                                                    <a href="#" class="desc_truncate">
+                                                    <a href="{{ url_for('single_book_page' , book_id=book._id) }}" class="desc_truncate">
                                                          {{ book.description | truncate(50) }}
                                                     </a>
                                                  </p>
@@ -132,7 +132,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <p class="flow-text">
-                                                     <a href="#" class="desc_truncate">
+                                                     <a href="{{ url_for('single_book_page' , book_id=big_img._id) }}" class="desc_truncate">
                                                          {{ big_img.description | truncate(200) }}
                                                     </a>
                                                  </p>
@@ -165,6 +165,7 @@
                                     <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class="best_selling_img materialboxed">
                                     <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                                     <a href='{{ book.affiliante_link}}' target='_blank' class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
+                                    <a href="{{ url_for('single_book_page' , book_id=book._id) }}" class="best_view"> View </a>
                                 </div>
                             </div>
                         </div>

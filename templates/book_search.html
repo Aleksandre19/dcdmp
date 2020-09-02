@@ -68,27 +68,38 @@
                         <h3 class="search-result-title"> The Search result </h3>
                         <div class="l-search-result">
                             <div class="row l-search-result-row">
-                                {% for result in results %}
-                                    <div class="col l3 search-card-col">
-                                        <div class="card-image l-search-card-wrapper">
-                                            <span class="books-price released-books-price">{{result.price}} EUR</span>
-                                            <a href=" {{ url_for('insert_in_my_list',  book_id=result._id, page='my_list') }}" class="l-search-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                            <img src=" {{ url_for('static', filename='img/uploaded/' + result.image_name) }}"  class="materialboxed l-search-img">
-                                            <a href='{{ result.affiliante_link}}' target="_blank" class="waves-effect waves-light btn purchase-icon search-purchase-icon">Purchase</a>
-                                        </div>
-                                    </div>
-                                    <div class="col l9">
-                                        <ul class="search-book-desc">
-                                            <li><span>Title</span> - {{ result.title }}</li>
-                                            <li><span>Author</span> - {{ result.author }}</li>
-                                            <li><span>Language</span> - {{ result.language }}</li>
-                                            <li><span>Published</span> - {{ result.released_date}}</li>
-                                            <li><span>Price</span> - {{ result.price }} EUR</li>
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        <ul>
+                                            {% for message in messages %}
+                                                <li class="center-align">
+                                                    <h3 class="flash-message"> {{ message }}</h3>
+                                                </li>
+                                            {% endfor %}    
                                         </ul>
-                                        <p class="l-search-result-text flow-text">
-                                            {{ result.description }}
-                                        </p>
-                                    </div>
+                                    {% endif %}
+                                {% endwith %}
+                                {% for result in results %}
+                                        <div class="col l3 search-card-col">
+                                            <div class="card-image l-search-card-wrapper">
+                                                <span class="books-price released-books-price">{{result.price}} EUR</span>
+                                                <a href=" {{ url_for('insert_in_my_list',  book_id=result._id, page='my_list') }}" class="l-search-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                                <img src=" {{ url_for('static', filename='img/uploaded/' + result.image_name) }}"  class="materialboxed l-search-img">
+                                                <a href='{{ result.affiliante_link}}' target="_blank" class="waves-effect waves-light btn purchase-icon search-purchase-icon">Purchase</a>
+                                            </div>
+                                        </div>
+                                        <div class="col l9">
+                                            <ul class="search-book-desc">
+                                                <li><span>Title</span> - {{ result.title }}</li>
+                                                <li><span>Author</span> - {{ result.author }}</li>
+                                                <li><span>Language</span> - {{ result.language }}</li>
+                                                <li><span>Published</span> - {{ result.released_date}}</li>
+                                                <li><span>Price</span> - {{ result.price }} EUR</li>
+                                            </ul>
+                                            <p class="l-search-result-text flow-text">
+                                                {{ result.description }}
+                                            </p>
+                                        </div>    
                                 {% endfor %}
                             </div>
                         </div>
