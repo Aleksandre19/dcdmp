@@ -45,7 +45,11 @@
                         <div class="col m12 l6">
                             {% for book in new_released %}
                                 {% if book.new_released %}
-                                    <div class="col s12 m6">
+                                    {% if loop.index <= 3 %}
+                                        <div class="col s12 m6">
+                                    {% else %} 
+                                        <div class="col l6 hide-on-med-and-down">
+                                    {% endif %}    
                                         <div class="card hoverable new-books-card">
                                             <div class="card-image">
                                                 <div class="crop-image">
@@ -158,7 +162,13 @@
                     
                     <!-- Books list -->
                     {% for book in best_selling %}
-                        <div class="col s12 m4 l3">
+                        {% if loop.index == 3 %}
+                            <div class="col s12 m4 l3 hide-on-med-and-down">
+                        {% elif loop.index == 4 %} 
+                            <div class="col s12 m4 l3 hide-on-small-only">
+                        {% else %}       
+                            <div class="col s12 m4 l3">
+                        {% endif %}    
                             <div class="card released-books-card">
                                 <div class="card-image">
                                     <span class="books-price released-books-price">{{book.price}} EUR</span>
