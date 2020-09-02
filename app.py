@@ -144,9 +144,19 @@ def added_books():
 def book_search():
     if request.method == "POST":
         book_name = request.form.get('book_name')
-        books = mongo.db.books.find({'title' : book_name})
 
-    return  render_template("book_search.html", results=books, most_searched=mongo.db.books.find_one({''}))
+        #Incrementing search reusult field in mongodb
+        #To be able to sort by most searched book
+        books = mongo.db.books.find({'title' : book_name})
+        for book in books:
+            inc = int(book['searched'])
+            inc += 1
+            mongo.db.books.update_one({'title' : book_name}, {'$set' : {'searched' : int(inc)}})
+
+        # Getting searche results by book names
+        searched_books = mongo.db.books.find({'title' : book_name})
+
+    return  render_template("book_search.html", results=searched_books)
 
     
 # If the user already exists in mongo db so it will be saved onlly in session
@@ -205,7 +215,7 @@ def auth():
         add_user_in_mongodb(name, email)
 
         # Rendering template and retrieving books by user      
-        return render_template('my_list.html' , books = retriev_books_by_user(name, email, page))
+        return render_template('my_list.html' , books = retriev_books_by_user(name, email, page), book_of_day=mongo.db.books.find_one({'book_of_day' : True}))
 
     return render_template('auth.html')
 
