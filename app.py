@@ -139,6 +139,18 @@ def added_books():
     return render_template("auth.html")
 
 
+# The most searched book
+def most_searched_book():
+    books = mongo.db.books.find({})
+    books_arr = []
+    for book in books:
+        books_arr.append(int(book['searched']))
+        books_arr.sort()
+        most_searched = books_arr[-1]
+
+    return mongo.db.books.find_one({'searched' : most_searched})
+
+
 # Searched book 
 @app.route('/book_search', methods=['POST'])
 def book_search():
@@ -156,7 +168,7 @@ def book_search():
         # Getting searche results by book names
         searched_books = mongo.db.books.find({'title' : book_name})
 
-    return  render_template("book_search.html", results=searched_books)
+    return  render_template("book_search.html", results=searched_books, searched=most_searched_book())
 
     
 # If the user already exists in mongo db so it will be saved onlly in session
