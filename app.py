@@ -14,9 +14,15 @@ if path.exists('env.py'):
 
 app = Flask(__name__)
 
-app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
-app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
-app.secret_key = os.environ.get('SECRET_KEY')
+# app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+# app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+# app.secret_key = os.environ.get('SECRET_KEY')
+
+
+app.config['MONGO_DBNAME'] = 'dcdmpDB'
+app.config['MONGO_URI'] = 'mongodb+srv://dcdmpDBUser:PassWord@dcdmp.cs4wp.mongodb.net/dcdmpDB?retryWrites=true&w=majority'
+app.secret_key = 'some key'
+
 mongo = PyMongo(app)
 
 
