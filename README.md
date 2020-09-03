@@ -85,8 +85,8 @@ The working website can be found [here.](https://dcdmp.herokuapp.com/)
 
 ## Technologies used
 
-1. [HTML5:](https://en.wikipedia.org/wiki/HTML5/)
-1. [CSS3:](https://en.wikipedia.org/wiki/CSS/)
+1. [HTML5](https://en.wikipedia.org/wiki/HTML5/)
+1. [CSS3](https://en.wikipedia.org/wiki/CSS/)
 1. [Materialize 0.100.2 / 1.0.0](https://materializecss.com/)
     -  It was used to assist with the responsiveness and styling of the website.
 1. [JavaScript](https://www.javascript.com/)
@@ -121,7 +121,7 @@ The working website can be found [here.](https://dcdmp.herokuapp.com/)
 
 ## Testing
 - The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project. In W3C CSS Validator are Materializecss framework’s errors.
-- In W3C Markup Validator there are ID (#s_form) Duplication error for: add_book, contact and singel_book_page pages. This is because I duplicate a form element and use a [Materializecss helpers][https://materializecss.com/helpers.html] - hide-on-med-and-down and  hide-on-large-only - to control a responsiveness of the search field.  
+- In W3C Markup Validator there are ID (#s_form) Duplication error for: add_book, contact and singel_book_page pages. This is because I duplicate a form element and use a [Materializecss helpers](https://materializecss.com/helpers.html/) - hide-on-med-and-down and  hide-on-large-only - to control a responsiveness of the search field.  
 - This website was tasted only in Chrome and safari browsers. Chrome inspect was used to checkout  a layout, styles and functionality for a tablets and mobile devices.
 - A large amount of testing was done to ensure that all pages were linking correctly and functioning appropriately.
 - ### Known Bugs
@@ -189,7 +189,7 @@ The working website can be found [here.](https://dcdmp.herokuapp.com/)
 
     - #### My List page 
 
-        - his page is not coded. It is only html and css. It should use [Google Map’s Api][https://cloud.google.com/maps-platform/?hl=en/] and [EmailJS][https://www.emailjs.com/] to send emails.    
+        - his page is not coded. It is only html and css. It should use [Google Map’s Api](https://cloud.google.com/maps-platform/?hl=en/) and [EmailJS](https://www.emailjs.com/) to send emails.    
     
 
 
@@ -288,12 +288,13 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 ### Credits
    - #### Content
-       - Content including a book’s cover images was taken from this website [https://www.bookdepository.com][https://www.bookdepository.com]
+       - Content including a book’s cover images was taken from this website [https://www.bookdepository.com](https://www.bookdepository.com)
 
    - #### Images
-       - Images for banners and for website design was taken from this website [https://www.pexels.com][https://www.pexels.com]
+       - Images for banners and for website design was taken from this website [https://www.pexels.com](https://www.pexels.com)
 
-   - #### Website’s design and a logo was created by developer in Photoshop. 
+   - #### Design
+        - Website’s design and a logo was created by developer in Photoshop. 
 
 
 ### Acknowledgements
