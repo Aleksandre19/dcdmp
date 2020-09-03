@@ -9,7 +9,7 @@
                     </div>
                     <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
-                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
+                            <input type="search" name="book_name" id="search" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
@@ -21,9 +21,12 @@
          <!-- Add Book Welcoming section for tablets and down devices  -->
         <section class="single-welcoming hide-on-large-only">
             <div class="row ">
+                    <div class="col s12 hide">
+                        <h1 class="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
+                    </div>
                     <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
-                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
+                            <input type="search" name="book_name" id="search" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
@@ -93,7 +96,7 @@
                                     <p class="add-book-price">Price</p>
                                     <p class="range-field">
                                         <i class="material-icons prefix">attach_money</i>
-                                        <input type="range" name="price" id="test5" min="0" max="100" class="add-book-range-circle" required/>
+                                        <input type="range" name="price" id="test5" min="0" max="100" class="add-book-range-circle" />
                                     </p>
                                 </div>
                                 <div class="file-field input-field col s12">
