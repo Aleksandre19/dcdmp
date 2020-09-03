@@ -54,7 +54,7 @@
                                             <div class="card-image">
                                                 <div class="crop-image">
                                                     <span class="books-price new-books-price">{{ book.price }} EUR</span>
-                                                    <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class='new-small-books-img books-img materialboxed'>
+                                                    <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " alt="{{ book.title }}" class='new-small-books-img books-img materialboxed'>
                                                     <span class="card-title books-card-title">{{ book.title }}</span>
                                                 </div>
                                                 <a href=" {{ url_for('insert_in_my_list',  book_id=book._id, page='home') }}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
@@ -71,57 +71,8 @@
                                     </div>
                                 {% endif %}
                             {% endfor %}    
-                            <!-- <div class="col s12 m6">
-                                <div class="card hoverable new-books-card">
-                                    <div class="card-image">
-                                        <div class="crop-image">
-                                            <span class="books-price new-books-price">20 EUR</span>
-                                            <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" class='new-books-img books-img materialboxed'>
-                                            <span class="card-title books-card-title">Card Title</span>
-                                        </div>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
-                                    </div>
-                                    <div class="card-content">
-                                        <p class="flow-text">I am a very simple card. I am good at containing small bits of information. I am ...</p>
-                                    </div>
-                                    <a class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m6">
-                                <div class="card  hoverable new-books-card">
-                                    <div class="card-image ">
-                                        <div class="crop-image">
-                                            <span class="books-price new-books-price">20 EUR</span>
-                                            <img src="{{ url_for('static', filename='img/sections/new_books/new-book-3.jpg') }} "  class='new-books-img books-img materialboxed'>
-                                            <span class="card-title books-card-title">Card Title</span>
-                                        </div>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
-                                    </div>
-                                    <div class="card-content">
-                                        <p class="flow-text">I am a very simple card. I am good at containing small bits of information. </p>
-                                    </div>
-                                    <a class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m6 hide-on-small-only">
-                                <div class="card hoverable new-books-card">
-                                    <div class="card-image">
-                                        <div class="crop-image">
-                                            <span class="books-price new-books-price">20 EUR</span>
-                                            <img src="{{ url_for('static', filename='img/sections/new_books/new-book-3.jpg') }} "  class='new-books-img books-img materialboxed'>
-                                            <span class="card-title books-card-title">Card Title</span>
-                                        </div>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
-                                    </div>
-                                    <div class="card-content">
-                                        <p class="flow-text">I am a very simple card. I am good at containing small bits of information. </p>
-                                    </div>
-                                    <a class="waves-effect waves-light btn purchase-icon books-purchase-icon">Purchase</a>
-                                </div>
-                            </div> -->
                         </div>
+
                         <div class="col l6 hide-on-med-and-down">
                              <div class="col">
                                     {% if big_img %}
@@ -129,7 +80,7 @@
                                             <div class="card-image">
                                                 <div class="crop-image big-card">
                                                     <span class="books-price new-books-price">{{ big_img.price }} EUR</span>
-                                                    <img src="{{ url_for('static', filename='img/uploaded/' + big_img.image_name ) }} "  class='new-books-img big-book books-img materialboxed'>
+                                                    <img src="{{ url_for('static', filename='img/uploaded/' + big_img.image_name ) }} " alt="big_img.title" class='new-books-img big-book books-img materialboxed'>
                                                     <span class="card-title books-card-title">{{ big_img.title }}</span>
                                                 </div>
                                                 <a href=" {{ url_for('insert_in_my_list',  book_id=big_img._id) }}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons new-books-add-icon">add</i></a>
@@ -172,7 +123,7 @@
                             <div class="card released-books-card">
                                 <div class="card-image">
                                     <span class="books-price released-books-price">{{book.price}} EUR</span>
-                                    <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class="best_selling_img materialboxed">
+                                    <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " alt="{{ book.title }}" class="best_selling_img materialboxed">
                                     <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                                     <a href='{{ book.affiliante_link}}' target='_blank' class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
                                     <a href="{{ url_for('single_book_page' , book_id=book._id) }}" class="best_view"> View </a>
@@ -180,36 +131,6 @@
                             </div>
                         </div>
                     {% endfor %}
-                        <!-- <div class="col s12 m4 l3">
-                            <div class="card released-books-card">
-                                <div class="card-image">
-                                    <span class="books-price released-books-price">20 EUR</span>
-                                    <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }} " class="materialboxed">
-                                    <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                    <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m4 l3 hide-on-small-only">
-                            <div class="card released-books-card">
-                                <div class="card-image">
-                                    <span class="books-price released-books-price">20 EUR</span>
-                                    <img src="{{ url_for('static', filename='img/sections/new_books/new-book-1.jpg') }} " class="materialboxed">
-                                    <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                    <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s12 m4 l3 hide-on-med-and-down">
-                            <div class="card released-books-card">
-                                <div class="card-image">
-                                    <span class="books-price released-books-price">20 EUR</span>
-                                    <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }} " class="materialboxed">
-                                    <a class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                    <a class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
-                                </div>
-                            </div>
-                        </div> -->
                    </div> 
                 </div>    
             </section>
