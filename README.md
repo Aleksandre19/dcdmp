@@ -1,5 +1,7 @@
 <h1 align="center">Data Centric Development Milestone Project</h1>
 
+
+
 The working website can be found [here.](https://dcdmp.herokuapp.com/)
 
  This site is a milestone project for the Data Centric Development section. For this purpose I choose a book storing theme.  On this website a user can very easily find and collect the books he or she wishes to read.
@@ -135,27 +137,170 @@ The working website can be found [here.](https://dcdmp.herokuapp.com/)
     - If there is more than one result of searched book than a filed in mongoDB named as “searched” doesn’t increment by one. If there is only one than it increments by one.
 
 
-
 ## Functionality
 
-  - ### Pages
+- ### Pages
 
-       - #### Home Page
+    - #### Home Page
 
-          - There are:
-              - Main menu.
-              - Website's logo.
-              - A banner with a search field.
-              - A new released books section.
-              - A best selling books section.
-              - A footer.
+        - There are:
+            - Main menu.
+            - Website's logo.
+            - A banner with a search field.
+            - A new released books section.
+            - A best selling books section.
+            - A footer.
+
         - In a menu the link underlines	 corresponding to the current page. To underline majority of adding books it has red colour.
         - By clicking on a search filed and typing a some letter a list of autocomplete is appearing. By clicking on a some link from this list the search submits automatically.
         - The posts has a cross signed add to my list icons. By clicking on that if a user is authenticated and the post is not already in the list the post adds in the user’s “My List”.
         - By clicking on the post’s images a Materialize media feature is triggering  and the image pop ups with nice effect.
+    
+
+    - #### Add book page
+
+        - No matter user is authenticated or no the user can add a new book on the site. If user is a new than a new user records automatically in a database.
+        - All fields are required by assigning required attribute to HTML input fields.
+        - Before adding a new book in database a app checks if the selected image has required size and format. If so process continues by successfully adding the book in the database. 
+        - The maximum image size is 500MB and allowed exstentions are PNG, JPG, JPEG and GIF.
+        - For better user experience this page uses a flask message function called Flash Messages to give to the users appropriate messages during process.
+    
+
+    - #### My List page
+
+        - In order to access to my list page the users must authenticate themselves.
+        - For logging and authentication this website doesn’t use Flask framework’s login functionality.
+        - In order to authenticate one must enter a name and email in the authentication form. If current user exits in the database than it takes all data necessary to this page from mongoldb and if a user is a new one than the app adds he or she as a new user in the mongodb.
+        - A authenticated user’s data stores in the flask session to control if the user is already logged in when navigating from other pages to the my list page.
+        - The Flask session is cookie based. Because of that the session doesn’t delete when user close browser or tab.
+        - To logout the user must use logout button which is only located on this page.
+        - here are two types of users: Usually users and admin. Admin can control additional setting such are:
+            - The book of the day.
+            - The special offer.
+            - The new released book.
+            - The best selling book.
+            - Show or no as a big post on a home page.
+        - This setting can be controlled on edit book page.
+        - On this page user can access the books which are in his/hers my list and the books which she or he added.
+        - From this page a user can delete and edit a book’s details.
+        - If user deletes the book from his or hers list than this books deletes only form list. And if user deletes the book from added books page than this books deletes completely including database and cover image.
+        - This page also uses Flask framework’s Flash function to give to a user a appropriate messages during using of this page.
 
 
+    - #### My List page 
 
+        - his page is not coded. It is only html and css. It should use [Google Map’s Api][https://cloud.google.com/maps-platform/?hl=en/] and [EmailJS][https://www.emailjs.com/] to send emails.    
+    
+
+
+## Deployment
+
+- The functional website is deployed on Heroku and the source code is deployed on GitHub  
+
+    - Deployment on Heroku
+        1. Creating account on heroku.
+        1. Creating new heroku app.
+        1. Login in Heroku from gitpod CLI using heroku login -i command.
+        1. Linking git  to heroku using:
+
+        ```
+        git remote add heroku https://git.heroku.com/dcdmp.git
+
+        ``` 
+        1. Creating requirements.txt by using:
+
+        ```
+        sudo pip3 freeze --local > requirements.txt
+
+        ```
+        1. Creating Procfile by using:
+
+        ```
+        echo web: python app.py > Procfile
+
+        ```
+        1. Setting IP and PORT on heroku website in setting section.
+        1. Adding files on staging area by using:
+
+        ```
+        git add .
+
+        ```
+        1. Committing by using:
+
+        ```
+        git commit -m “ Deploying website”
+
+        ```
+        1. Pushing to heroku by using:
+
+        ```
+        git push heroku master
+
+        ```
+        1. Starting web process in gitpod by using:
+
+        ```
+        heroku  ps:scale  web=1
+
+        ```
+        1. Opening deploy project in browser by clicking - Open app on heroku website. 
+
+
+    - The source files of website was deploy on GitHub using following steps:
+        1. Creating new repository on GitHub website. 
+        1. Linking git to GitHub by using:
+
+        ```
+        git remote add origin https://github.com/Aleksandre19/dcdmp.git
+
+        ```
+        1. Pushing files to GitHub by using:
+
+        ```
+        git push
+
+        ```
+### Making a Local Clone
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
+
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+```
+
+7. Press Enter. Your local clone will be created.
+
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+> Cloning into `CI-Clone`...
+> remote: Counting objects: 10, done.
+> remote: Compressing objects: 100% (8/8), done.
+> remove: Total 10 (delta 1), reused 10 (delta 1)
+> Unpacking objects: 100% (10/10), done.
+``` 
+
+
+### Credits
+   - #### Content
+       - Content including a book’s cover images was taken from this website [https://www.bookdepository.com][https://www.bookdepository.com]
+
+   - #### Images
+       - Images for banners and for website design was taken from this website [https://www.pexels.com][https://www.pexels.com]
+
+   - #### Website’s design and a logo was created by developer in Photoshop. 
+
+
+### Acknowledgements
+
+-   My Mentor for continuous helpful feedback.
+
+-   Tutor support at Code Institute for their support.
 
 
 
