@@ -79,7 +79,7 @@ The working website can be found [here.](https://dcdmp.herokuapp.com/)
 1. [Materializecss Pickers:](https://materializecss.com/pickers.html/)
     -  It is used to select a date from a calendar in add book page.
 1. [Materializecss Range:](https://materializecss.com/range.html/)
-    -  It is used for choosing a price on a add book page.  This future is modified from [noUiSlider][https://refreshless.com/nouislider/] by Materializecss.
+    -  It is used for choosing a price on a add book page.  This future is modified from [noUiSlider](https://refreshless.com/nouislider/) by Materializecss.
 
 
 
@@ -131,7 +131,8 @@ The working website can be found [here.](https://dcdmp.herokuapp.com/)
     - On tablet devices the search form and it’s icons needs to be aligned properly. 
     - On tablet devices a buttons of edition and deletion in my list page needs to be aligned properly.
     - On tablet devices the hamburger menu is little down. It must be middle.
-    - Colour of titles	 in new released book section are white and that is way are badly visible.
+    - Colour of titles in new released book section are white and that is way are badly visible.
+    - If the book's title is long it scratches cards of the posts in the new released books section.
     - When zooming images in new released books section they align them selfs toper.The alignment should be centered.
     - If the searched book wasn’t found a website doesn’t say anything.
     - If there is more than one result of searched book than a filed in mongoDB named as “searched” doesn’t increment by one. If there is only one than it increments by one.
