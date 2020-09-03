@@ -1,14 +1,22 @@
 import os
+from os import path
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 import uuid
 
+# Importing env.py
+# env.py is file there is sett information which needs to be hidden
+if path.exists('env.py'):
+    import env
+
+
+
 app = Flask(__name__)
 
-app.config['MONGO_DBNAME'] = 'dcdmpDB'
-app.config['MONGO_URI'] = 'mongodb+srv://dcdmpDBUser:PassWord@dcdmp.cs4wp.mongodb.net/dcdmpDB?retryWrites=true&w=majority'
-app.secret_key = 'some secret kay'
+app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+app.secret_key = os.environ.get('SECRET_KEY')
 mongo = PyMongo(app)
 
 
@@ -167,7 +175,7 @@ def book_search():
         for book in books:
             inc = int(book['searched'])
             inc += 1
-            mongo.db.books.update_one({'title' : book_name}, {'$set' : {'searched' : int(inc)}})
+            mongo.db.books.update({'title' : book_name}, {'$set' : {'searched' : int(inc)}})
 
         # Getting searche results by book names
         searched_books = mongo.db.books.find({'title' : book_name})
