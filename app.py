@@ -17,6 +17,10 @@ def data_for_search_autocomplete():
     return mongo.db.books.find({})
 
 
+def special_offer():
+    return mongo.db.books.find_one({'special_offer' : True})
+
+
 @app.route('/')
 def home():
     return render_template(
@@ -88,7 +92,7 @@ def my_list():
         page = get_page_name()
         return render_template('/my_list.html', books=retriev_books_by_user(name, email, page), book_of_day=mongo.db.books.find_one({'book_of_day' : True}))
 
-    return render_template("auth.html")
+    return render_template("auth.html" , special_offer=special_offer())
 
 
 
@@ -136,7 +140,7 @@ def added_books():
         page = get_page_name()
         return render_template('/added_books.html', books=retriev_books_by_user(session['user'], session['email'], page), book_of_day=mongo.db.books.find_one({'book_of_day' : True}))
 
-    return render_template("auth.html")
+    return render_template("auth.html" , special_offer=special_offer())
 
 
 # The most searched book
@@ -199,7 +203,7 @@ def add_user_in_mongodb(name, email):
 @app.route('/log_out')
 def log_out():
     session.clear()
-    return render_template('auth.html')
+    return render_template('auth.html' , special_offer=special_offer())
 
 
 #Get books IDs
@@ -229,7 +233,7 @@ def auth():
         # Rendering template and retrieving books by user      
         return render_template('my_list.html' , books = retriev_books_by_user(name, email, page), book_of_day=mongo.db.books.find_one({'book_of_day' : True}))
 
-    return render_template('auth.html')
+    return render_template('auth.html', special_offer=special_offer())
 
 
 
@@ -416,7 +420,7 @@ def edit_book():
 
         return redirect(url_for('added_books'))
 
-    return render_template('auth.html')
+    return render_template('auth.html' , special_offer=special_offer())
 
 
 
@@ -456,7 +460,7 @@ def update_book(book_id):
             flash("The Book Has Been Successfully Updated") 
             return redirect(url_for('edit_book', book_id=book_id))
 
-    return render_template('auth.html')    
+    return render_template('auth.html' , special_offer=special_offer())    
 
 
 

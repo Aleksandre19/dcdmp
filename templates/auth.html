@@ -10,21 +10,18 @@
                     <div class="col l4">
                         <a href="#">
                             <figure class="special-offer">
-                                <img src="{{ url_for('static', filename='img/sections/new_books/new-book-2.jpg') }}" alt="Special Offer " class="special-offer-img">
+                                <img src="{{ url_for('static', filename='img/uploaded/' + special_offer.image_name)}}" alt="Special Offer " class="special-offer-img">
                             </figure>
                         </a> 
                     </div>
                                
                     <div class="col l8">
-                            <h2 class="day_book_title">Loveless</h2>
-                            <h3 class="day_book_auth">Alice Oseman</h3>
+                            <h2 class="day_book_title">{{ special_offer.title }}</h2>
+                            <h3 class="day_book_auth">{{ special_offer.author }}</h3>
                             <p class="day_book_text flow-text"> 
-                                        A tender account of Georgia and her vexed quest for first love, Loveless
-                                        is a sprightly, affecting work from a writer at the top of her game.
-                                        The fourth novel from the phenomenally talented Alice Oseman - one 
-                                        of the most authentic and talked-about voices in contemporary writer at the top of her game.
-                                        The fourth novel from the phenomenally talented Alice Oseman - one 
-                                        of the most authentic and talked-about voices in contemporary YA
+                                 <a href="{{ url_for('single_book_page' , book_id=special_offer._id) }}" class="view_link">
+                                    {{ special_offer.description | truncate(180) }}
+                                </a>        
                             </p>
                         </div> 
                 </article>
