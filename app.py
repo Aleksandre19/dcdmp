@@ -137,7 +137,7 @@ def insert_in_my_list(book_id):
         flash("The book has been added seccessfully in your list")
         return redirect(url_for(page))
 
-    return render_template('auth.html')
+    return render_template('auth.html' , special_offer=special_offer())
 
 
 

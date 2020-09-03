@@ -122,9 +122,9 @@
                         {% endif %}    
                             <div class="card released-books-card">
                                 <div class="card-image">
-                                    <span class="books-price released-books-price">{{book.price}} EUR</span>
+                                    <span class="books-price released-books-price">{{book.price}} EUR </span>
                                     <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " alt="{{ book.title }}" class="best_selling_img materialboxed">
-                                    <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    <a href=" {{ url_for('insert_in_my_list',  book_id=book._id, page='home') }}" class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                                     <a href='{{ book.affiliante_link}}' target='_blank' class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
                                     <a href="{{ url_for('single_book_page' , book_id=book._id) }}" class="best_view"> View </a>
                                 </div>
