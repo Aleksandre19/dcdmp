@@ -11,7 +11,7 @@
                     </div>
                    <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
-                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
+                            <input id="search" type="search" name="book_name" class="home-search-input" required>
                             <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
@@ -22,10 +22,13 @@
 
         <section class="single-welcoming hide-on-large-only">
             <div class="row ">
+                     <div class="col s12 hide">
+                        <h1 class="welcoming_text">Find And Collect Your Favourite Books From All Over The World </h1>
+                    </div>
                     <form action="{{ url_for('book_search') }}" id="s_form" method="POST" class="col s12" autocomplete="off">
                         <div class="input-field">
-                            <input id="autocomplete-input" type="search" name="book_name" class="home-search-input" required>
-                            <label class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
+                            <input id="low-devices-search" type="search" name="book_name" class="home-search-input" required>
+                            <label class="label-icon" for="low-devices-search"><i class="material-icons search-icon">search</i></label>
                             <i class="material-icons colose-search-icon">close</i> 
                         </div>  
                     </form>
@@ -44,7 +47,7 @@
                                     <div class="card single-card">
                                         <div class="card-image">
                                             <span class="books-price released-books-price">{{ book.title }} EUR</span>
-                                            <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class="materialboxed">
+                                            <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " alt="{{ book.title }}" class="materialboxed">
                                             <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" target="_blank" class="released-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                                             <a href='{{ book.affiliante_link}}' target="_blank" class="waves-effect waves-light btn purchase-icon release-purchase-icon">Purchase</a>
                                         </div>
@@ -72,6 +75,7 @@
 
          <!-- Single book page's section for Desktop devices -->
         <section class="l-search-book-section hide-on-med-and-down">
+            <h2 class="hide"> H2 element just for HTML validator </h2>
             <div class="container l-single-result-container">
                 <div class="row">
                     <div class="col">
@@ -79,9 +83,9 @@
                             <div class="row l-search-result-row">
                                 <div class="col l3 search-card-col">
                                     <div class="card-image l-search-card-wrapper">
-                                        <span class="books-price released-books-price">{{ book.title }} EUR</span>
+                                        <span class="books-price released-books-price">{{ book.price }} EUR</span>
                                         <a href=" {{ url_for('insert_in_my_list',  book_id=book._id) }}" target="_blank" class="l-search-add-icon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                        <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " class="materialboxed l-search-img">
+                                        <img src="{{ url_for('static', filename='img/uploaded/' + book.image_name ) }} " alt="{{ book.title }}" class="materialboxed l-search-img">
                                         <a href='{{ book.affiliante_link}}' target="_blank" class="waves-effect waves-light btn purchase-icon search-purchase-icon">Purchase</a>
                                     </div>
                                 </div>
